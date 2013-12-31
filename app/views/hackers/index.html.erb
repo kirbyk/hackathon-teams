@@ -1,0 +1,37 @@
+<h1>Listing hackers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fname</th>
+      <th>Lname</th>
+      <th>Email</th>
+      <th>Github</th>
+      <th>Tshirt size</th>
+      <th>Why</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hackers.each do |hacker| %>
+      <tr>
+        <td><%= hacker.fname %></td>
+        <td><%= hacker.lname %></td>
+        <td><%= hacker.email %></td>
+        <td><%= hacker.github %></td>
+        <td><%= hacker.tshirt_size %></td>
+        <td><%= hacker.why %></td>
+        <td><%= link_to 'Show', hacker %></td>
+        <td><%= link_to 'Edit', edit_hacker_path(hacker) %></td>
+        <td><%= link_to 'Destroy', hacker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hacker', new_hacker_path %>

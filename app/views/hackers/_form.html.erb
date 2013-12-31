@@ -1,0 +1,41 @@
+<%= form_for(@hacker) do |f| %>
+  <% if @hacker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hacker.errors.count, "error") %> prohibited this hacker from being saved:</h2>
+
+      <ul>
+      <% @hacker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fname %><br>
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    <%= f.label :lname %><br>
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :github %><br>
+    <%= f.text_field :github %>
+  </div>
+  <div class="field">
+    <%= f.label :tshirt_size %><br>
+    <%= f.text_field :tshirt_size %>
+  </div>
+  <div class="field">
+    <%= f.label :why %><br>
+    <%= f.text_area :why %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

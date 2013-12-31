@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @hacker.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @hacker.lname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @hacker.email %>
+</p>
+
+<p>
+  <strong>Github:</strong>
+  <%= @hacker.github %>
+</p>
+
+<p>
+  <strong>Tshirt size:</strong>
+  <%= @hacker.tshirt_size %>
+</p>
+
+<p>
+  <strong>Why:</strong>
+  <%= @hacker.why %>
+</p>
+
+<%= link_to 'Edit', edit_hacker_path(@hacker) %> |
+<%= link_to 'Back', hackers_path %>
