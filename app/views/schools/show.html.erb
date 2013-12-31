@@ -5,5 +5,33 @@
   <%= @school.name %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Fname</th>
+      <th>Lname</th>
+      <th>School</th>
+      <th>Email</th>
+      <th>Github</th>
+      <th>Tshirt size</th>
+      <th>Why</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @school.hackers.each do |hacker| %>
+      <tr>
+        <td><%= hacker.fname %></td>
+        <td><%= hacker.lname %></td>
+        <td><%= hacker.school.name if hacker.school %></td>
+        <td><%= hacker.email %></td>
+        <td><%= hacker.github %></td>
+        <td><%= hacker.tshirt_size %></td>
+        <td><%= hacker.why %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_school_path(@school) %> |
 <%= link_to 'Back', schools_path %>

@@ -5,6 +5,7 @@
     <tr>
       <th>Fname</th>
       <th>Lname</th>
+      <th>School</th>
       <th>Email</th>
       <th>Github</th>
       <th>Tshirt size</th>
@@ -20,6 +21,7 @@
       <tr>
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>
+        <td><%= hacker.school.name if hacker.school %></td>
         <td><%= hacker.email %></td>
         <td><%= hacker.github %></td>
         <td><%= hacker.tshirt_size %></td>

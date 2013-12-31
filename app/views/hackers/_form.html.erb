@@ -20,6 +20,10 @@
     <%= f.text_field :lname %>
   </div>
   <div class="field">
+    <%= f.label :school %><br>
+    <%= f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"} %>
+  </div>
+  <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>

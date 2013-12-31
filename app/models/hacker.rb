@@ -1,3 +1,3 @@
 class Hacker < ActiveRecord::Base
-  has_one :school
+  belongs_to :school
 end
