@@ -1,10 +1,11 @@
 class HackersController < ApplicationController
   before_action :set_hacker, only: [:show, :edit, :update, :destroy]
-  before_filter :prepare_schools
+  before_filter :prepare_schools, :prepare_teams
 
   # GET /hackers
   # GET /hackers.json
   def index
+    # @hackers = Hacker.all.group("team_id")
     @hackers = Hacker.all
   end
 
@@ -68,6 +69,11 @@ class HackersController < ApplicationController
       @schools = School.all
     end
 
+    # add the @teams = Team.all to the before action so avail for all actions  
+    def prepare_teams
+      @teams = Team.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_hacker
       @hacker = Hacker.find(params[:id])
@@ -75,6 +81,6 @@ class HackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hacker_params
-      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :email, :github, :tshirt_size, :why)
+      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :email, :github, :tshirt_size, :why)
     end
 end

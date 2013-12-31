@@ -22,6 +22,9 @@
   <div class="field">
     <%= f.label :school %><br>
     <%= f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"} %>
+  <div class="field">
+    <%= f.label :team %><br>
+    <%= f.collection_select :team_id, @teams, :id, :members, {:include_blank => "Please select"} %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
