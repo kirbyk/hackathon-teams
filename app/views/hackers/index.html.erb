@@ -3,13 +3,11 @@
 <table>
   <thead>
     <tr>
+      <th>Team</th>
       <th>Fname</th>
       <th>Lname</th>
       <th>School</th>
-      <th>Email</th>
       <th>Github</th>
-      <th>Tshirt size</th>
-      <th>Team</th>
       <th>Why</th>
       <th></th>
       <th></th>
@@ -20,13 +18,11 @@
   <tbody>
     <% @hackers.each do |hacker| %>
       <tr>
+        <td><%= hacker.team_id %></td>
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>
         <td><%= hacker.school.name if hacker.school %></td>
-        <td><%= hacker.email %></td>
-        <td><%= hacker.github %></td>
-        <td><%= hacker.tshirt_size %></td>
-        <td><%= hacker.team_id %></td>
+        <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
         <td><%= hacker.why %></td>
         <td><%= link_to 'Show', hacker %></td>
         <td><%= link_to 'Edit', edit_hacker_path(hacker) %></td>
