@@ -1,3 +1,9 @@
 <%= link_to 'Hackers', hackers_path %>
 <%= link_to 'Teams', teams_path %>
 <%= link_to 'Schools', schools_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Signin', new_user_session_path %>
+  <%= link_to 'Signup', new_user_registration_path %>
+<% end %>
