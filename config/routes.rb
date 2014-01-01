@@ -1,8 +1,9 @@
 HackathonTeams::Application.routes.draw do
+  devise_for :users
   resources :teams
 
   resources :schools
-
+  
   resources :hackers
   root 'hackers#index'
 
