@@ -4,12 +4,12 @@
   <thead>
     <tr>
       <th>Team</th>
+      <th>Team Rating</th>
       <th>Fname</th>
       <th>Lname</th>
       <th>School</th>
       <th>Email</th>
       <th>Github</th>
-      <th>Tshirt size</th>
       <th>Why</th>
       <th></th>
       <th></th>
@@ -21,16 +21,17 @@
     <% @teams.each do |team| %>
       <tr>
         <td><%= link_to "Team #{team.id}", team %></td>
+        <td><%= '%.2f' % team.rating_avg %></td>
       </tr>
       <% team.hackers.each do |hacker| %>
         <tr>
+          <td></td>
           <td></td>
           <td><%= hacker.fname %></td>
           <td><%= hacker.lname %></td>
           <td><%= hacker.school.name if hacker.school %></td>
           <td><%= hacker.email %></td>
-          <td><%= hacker.github %></td>
-          <td><%= hacker.tshirt_size %></td>
+          <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
           <td><%= hacker.why %></td>
           <td><%= link_to 'Show', hacker %></td>
           <td><%= link_to 'Edit', edit_hacker_path(hacker) %></td>
