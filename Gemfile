@@ -9,6 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'spreadsheet'
 gem 'devise'
+gem 'nokogiri'
 
 group :doc do
   gem 'sdoc', require: false

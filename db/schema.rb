@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101200232) do
+ActiveRecord::Schema.define(version: 20140102214154) do
 
   create_table "groups", force: true do |t|
     t.datetime "created_at"
@@ -29,10 +29,23 @@ ActiveRecord::Schema.define(version: 20140101200232) do
     t.datetime "updated_at"
     t.integer  "school_id"
     t.integer  "team_id"
+    t.integer  "g_contributions"
+    t.integer  "g_followers"
+    t.integer  "g_stars"
+    t.float    "rating"
   end
 
   add_index "hackers", ["school_id"], name: "index_hackers_on_school_id"
   add_index "hackers", ["team_id"], name: "index_hackers_on_team_id"
+
+  create_table "ratings", force: true do |t|
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "hacker_id"
+  end
+
+  add_index "ratings", ["hacker_id"], name: "index_ratings_on_hacker_id"
 
   create_table "schools", force: true do |t|
     t.string   "name"
@@ -43,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140101200232) do
   create_table "teams", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "rating_avg"
   end
 
   create_table "users", force: true do |t|
