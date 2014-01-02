@@ -4,10 +4,14 @@
   <thead>
     <tr>
       <th>Team</th>
+      <th>Rating</th>
       <th>Fname</th>
       <th>Lname</th>
       <th>School</th>
       <th>Github</th>
+      <th>GC</th>
+      <th>GF</th>
+      <th>GS</th>
       <th>Why</th>
       <th></th>
       <th></th>
@@ -19,10 +23,15 @@
     <% @hackers.each do |hacker| %>
       <tr>
         <td><%= hacker.team_id %></td>
+        <%# <td><%= hacker.ratings.first.value if hacker.ratings.first %1></td> %>
+        <td><%= '%.2f' % hacker.rating %></td>
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>
         <td><%= hacker.school.name if hacker.school %></td>
         <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
+        <td><%= hacker.g_contributions %></td>
+        <td><%= hacker.g_followers %></td>
+        <td><%= hacker.g_stars %></td>
         <td><%= hacker.why %></td>
         <td><%= link_to 'Show', hacker %></td>
         <td><%= link_to 'Edit', edit_hacker_path(hacker) %></td>
