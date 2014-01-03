@@ -1,6 +1,6 @@
 class HackersController < ApplicationController
+  before_filter :authenticate_user!, :prepare_schools, :prepare_teams
   before_action :set_hacker, only: [:show, :edit, :update, :destroy]
-  before_filter :prepare_schools, :prepare_teams
 
   # GET /hackers
   # GET /hackers.json
