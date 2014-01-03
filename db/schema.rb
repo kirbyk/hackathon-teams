@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102214154) do
+ActiveRecord::Schema.define(version: 20140103032537) do
 
   create_table "groups", force: true do |t|
     t.datetime "created_at"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140102214154) do
     t.integer  "g_followers"
     t.integer  "g_stars"
     t.float    "rating"
+    t.string   "status"
   end
 
   add_index "hackers", ["school_id"], name: "index_hackers_on_school_id"

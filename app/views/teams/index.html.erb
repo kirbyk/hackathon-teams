@@ -5,12 +5,13 @@
     <tr>
       <th>Team</th>
       <th>Team Rating</th>
+      <th>Status</th>
+      <th>Rating</th>
       <th>Fname</th>
       <th>Lname</th>
       <th>School</th>
       <th>Email</th>
       <th>Github</th>
-      <th>Why</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,18 +22,19 @@
     <% @teams.each do |team| %>
       <tr>
         <td><%= link_to "Team #{team.id}", team %></td>
-        <td><%= '%.2f' % team.rating_avg %></td>
+        <td><%= '%.2f' % team.rating_avg if team.rating_avg %></td>
       </tr>
       <% team.hackers.each do |hacker| %>
         <tr>
           <td></td>
           <td></td>
+          <td><%= hacker.status %></td>
+          <td><%= hacker.rating %></td>
           <td><%= hacker.fname %></td>
           <td><%= hacker.lname %></td>
           <td><%= hacker.school.name if hacker.school %></td>
           <td><%= hacker.email %></td>
           <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
-          <td><%= hacker.why %></td>
           <td><%= link_to 'Show', hacker %></td>
           <td><%= link_to 'Edit', edit_hacker_path(hacker) %></td>
           <td><%= link_to 'Destroy', hacker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
