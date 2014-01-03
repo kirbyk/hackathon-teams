@@ -22,22 +22,22 @@ namespace :import do
 
   desc "Import the schools"
   task :schools => :environment do
+    puts "Importing Schools..."
     sheet = get_spreadsheet
 
     sheet.each 1 do |row|
       School.create(name: row[2])
-      puts row[2]
     end
-
+    puts "Schools Complete"
   end
 
   desc "Import the hackers"
   task :hackers => :environment do
+    puts "Importing Hackers..."
     sheet = get_spreadsheet
 
     sheet.each 1 do |row|
       next if row[0].nil?
-      puts row[1]
 
       name = row[1].split(' ')
       school_id = School.find_by_name(row[2]).id
@@ -45,10 +45,12 @@ namespace :import do
 
       Hacker.create(fname: name[0], lname: name[1], school_id: school_id, email: row[3], github: github, tshirt_size: row[7], why: row[8])
     end
+    puts "Hackers Complete"
   end
 
   desc "Import the teams"
   task :teams => :environment do
+    puts "Importing Teams..."
     sheet = get_spreadsheet
 
     sheet.each 1 do |row|
@@ -70,23 +72,22 @@ namespace :import do
         
         hacker.team_id = team.id
         hacker.save
-        puts mate
       end
-
     end
 
     Team.all.each {|team| team.destroy if team.hackers.empty?}
+    puts "Teams Complete"
   end
 
   desc "Scrape github data"
   task :github => :environment do
+    puts "Importing Github Data... (this might take up to 5 minutes)"
     sheet = get_spreadsheet
 
     sheet.each 1 do |row|
       next if row[4].nil?
 
       github = sanatize_github row[4]
-      puts github
 
       user_page = Nokogiri::HTML(open("https://github.com/#{github}"))
 
@@ -101,14 +102,13 @@ namespace :import do
       hacker.g_stars = stars
       hacker.save
 
-      puts "#{github} Contributions #{contributions}, Followers #{followers}, Stars #{stars}"
-
     end
-
+    puts "Github Complete"
   end
   
-  desc "Import Hacker Rankings"
+  desc "Import Hacker Ratings"
   task :ratings => :environment do
+    puts "Importing ratings..."
     sheet = get_spreadsheet
 
     sheet.each 1 do |row|
@@ -118,12 +118,13 @@ namespace :import do
 
       hacker.rating = row[10].to_f
       hacker.save
-      puts row[1]
     end
+    puts "Ratings complete"
   end
 
-  desc "Import Team Rankings"
+  desc "Import Team Ratings"
   task :team_ratings => :environment do
+    puts "Importing team ratings..."
     Team.all.each do |team|
       arr = []
       team.hackers.each do |hacker|
@@ -132,12 +133,13 @@ namespace :import do
       
       team.rating_avg = arr.inject{ |sum, el| sum + el }.to_f / arr.size
       team.save
-    
     end
+    puts "Team Ratings Complete"
   end
 
   desc "Import Hacker Statuses"
   task :statuses => :environment do
+    puts "Importing Statuses..."
     sheet = get_spreadsheet
 
     sheet.each 1 do |row|
@@ -147,8 +149,11 @@ namespace :import do
 
       hacker.status = row[5]
       hacker.save
-      puts row[1]
     end
+    puts "Statuses Complete"
   end
+
+  desc "Import Everything"
+  task :all => [:schools, :hackers, :teams, :github, :ratings, :team_ratings, :statuses]
 
 end
