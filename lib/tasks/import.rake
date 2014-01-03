@@ -82,7 +82,7 @@ namespace :import do
   task :github => :environment do
     sheet = get_spreadsheet
 
-    sheet.each 847 do |row|
+    sheet.each 1 do |row|
       next if row[4].nil?
 
       github = sanatize_github row[4]
@@ -116,7 +116,7 @@ namespace :import do
 
       hacker = Hacker.find_by_email(row[3])
 
-      hacker.rating = row[21].to_f
+      hacker.rating = row[10].to_f
       hacker.save
       puts row[1]
     end
@@ -133,6 +133,21 @@ namespace :import do
       team.rating_avg = arr.inject{ |sum, el| sum + el }.to_f / arr.size
       team.save
     
+    end
+  end
+
+  desc "Import Hacker Statuses"
+  task :statuses => :environment do
+    sheet = get_spreadsheet
+
+    sheet.each 1 do |row|
+      next if row[0].nil?
+
+      hacker = Hacker.find_by_email(row[3])
+
+      hacker.status = row[5]
+      hacker.save
+      puts row[1]
     end
   end
 
