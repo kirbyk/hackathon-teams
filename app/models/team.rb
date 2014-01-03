@@ -1,16 +1,10 @@
 class Team < ActiveRecord::Base
   has_many :hackers
-
   def members
-    hackers = self.hackers
-    unless hackers.empty?
-      arr = []
-      self.hackers.each do |hacker|
-        arr << hacker.email
-      end
-      arr.join(', ')
+    if self.hackers.present?
+      return self.hackers.map{ |hacker| hacker.email }.join(', ')
     else
-      "#{self.id}"
+      return self.id.to_s
     end
   end
 end

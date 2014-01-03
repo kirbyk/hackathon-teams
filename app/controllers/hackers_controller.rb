@@ -6,7 +6,7 @@ class HackersController < ApplicationController
   # GET /hackers.json
   def index
     # @hackers = Hacker.all.group("team_id")
-    @hackers = Hacker.all
+    @hackers = Hacker.all.to_a
   end
 
   # GET /hackers/1
