@@ -7,6 +7,8 @@ HackathonTeams::Application.routes.draw do
   resources :hackers
 
   root 'hackers#index'
+
+  get 'stats' => 'stats#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
