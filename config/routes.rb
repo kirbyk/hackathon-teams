@@ -6,9 +6,7 @@ HackathonTeams::Application.routes.draw do
   
   resources :hackers
 
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  root 'hackers#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

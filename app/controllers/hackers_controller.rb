@@ -1,12 +1,13 @@
 class HackersController < ApplicationController
   before_filter :authenticate_user!, :prepare_schools, :prepare_teams
   before_action :set_hacker, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /hackers
   # GET /hackers.json
   def index
     # @hackers = Hacker.all.group("team_id")
-    @hackers = Hacker.all.to_a
+    @hackers = Hacker.order(sort_column + " " + sort_direction)
   end
 
   # GET /hackers/1
@@ -82,5 +83,13 @@ class HackersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def hacker_params
       params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :email, :github, :tshirt_size, :why)
+    end
+
+    def sort_column
+      Hacker.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
