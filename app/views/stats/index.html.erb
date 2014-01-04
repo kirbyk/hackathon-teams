@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <th>School</th>
+    <th>Accepted</th>
+    <th>Waitlisted</th>
+    <th>Rejected</th>
+    <th>Applicants</th>
+  </thead>
+  <tbody>
+    <% schools = [:'Purdue University',:'UIUC',:'University of Wisconsin - Madison',:'Rutgers University',:'Carnegie Mellon University',:'Ohio State University',:'University of Maryland',:'University of Waterloo',:'University of Michigan',:'Rose-Hulman Institute of Technology',:'Northwestern University',:'University of Iowa'] %>
+    <% schools.each do |school| %>
+      <tr>
+        <td><%= school %></td>
+        <td><%= @accepted[school] %></td>
+        <td><%= @waitlisted[school] %></td>
+        <td><%= @rejected[school] %></td>
+        <td><%= @applied[school] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
