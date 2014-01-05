@@ -1,6 +1,6 @@
 <h1>Hackers</h1>
 
-<table class="table table-striped">
+<table class="table table-striped" id="clickable">
   <thead>
     <tr>
       <th><%= sortable "status" %></th>
@@ -35,3 +35,16 @@
 <br>
 
 <%= link_to 'New Hacker', new_hacker_path %>
+
+<script>
+  $(document).ready(function() {
+
+      $('#clickable tr').click(function() {
+          var href = $(this).find("a").eq(1).attr("href");
+          if(href) {
+              window.location = href;
+          }
+      });
+
+  });
+</script>
