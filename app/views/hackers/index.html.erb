@@ -18,7 +18,7 @@
   <tbody>
     <% @hackers.each do |hacker| %>
       <tr>
-        <td><%= hacker.status %></td>
+        <td><%= hacker.status.name if hacker.status %></td>
         <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>

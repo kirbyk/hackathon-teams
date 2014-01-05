@@ -11,6 +11,31 @@
 </p>
 
 <p>
+  <strong>Status:</strong>
+  <%= @hacker.status.name if @hacker.status %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @hacker.rating %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= school_link @hacker.school.name %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @hacker.team.members %>
+</p>
+
+<p>
+  <strong>Team Rating:</strong>
+  <%= @hacker.team.rating_avg %>
+</p>
+
+<p>
   <strong>Email:</strong>
   <%= @hacker.email %>
 </p>

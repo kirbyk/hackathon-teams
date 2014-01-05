@@ -11,6 +11,39 @@ namespace :import do
     book = Spreadsheet.open(path)
     book.worksheet(0)
   end
+
+  def get_name str
+    arr = Array.new
+    if (/^[\w'-]+ Van [\w'-]+$/ =~ str) == 0
+      arr[0] = str.split(' ')[0]
+      arr[1] = str.split(' ')[1] + ' ' + str.split[2]
+    elsif (/^[\w'-]+ [\w'-]+$/ =~ str) == 0
+      arr[0] = str.split(' ')[0]
+      arr[1] = str.split(' ')[1]
+    elsif (/^[\w'-]+ [\w'-.]+ [\w'-]+$/ =~ str) == 0
+      arr[0] = str.split(' ')[0]
+      arr[1] = str.split(' ')[2]
+    elsif (/^[\w'-]+$/ =~ str) == 0
+      arr[0] = str.split(' ')[0]
+      arr[1] = ''
+    elsif (/^[\w'-]+ \([\w'-]+\) [\w'-]+$/ =~ str) == 0
+      arr[0] = str.split(' ')[0]
+      arr[1] = str.split(' ')[2]
+    elsif (/^[\w'-]+ [\w'-]+ \([\w'-]+\)$/ =~ str) == 0
+      arr[0] = str.split(' ')[0]
+      arr[1] = str.split(' ')[1]
+    elsif (/^[\w]+ [\w'-]+ [\w'-]+$/ =~ str) == 0
+      arr[0] = str.split(' ')[0] + ' ' + str.split(' ')[1]
+      arr[1] = str.split(' ')[2]
+    elsif (/^[\w]+ [\w'-]+ [\w'-]+ [\w'-]+$/ =~ str) == 0
+      arr[0] = str.split(' ')[0]
+      arr[1] = str.split(' ')[1] + ' ' + str.split(' ')[2] + ' ' + str.split(' ')[3]
+    else
+      arr[0] = str.split(' ')[0]
+      arr[1] = str.split(' ')[1]
+    end
+    arr
+  end
   
   def sanatize_github str
     if str
@@ -39,7 +72,7 @@ namespace :import do
     sheet.each 1 do |row|
       next if row[0].nil?
 
-      name = row[1].split(' ')
+      name = get_name(row[1])
       school_id = School.find_by_name(row[2]).id
       github = sanatize_github row[4]
 
@@ -116,7 +149,7 @@ namespace :import do
 
       hacker = Hacker.find_by_email(row[3])
 
-      hacker.rating = row[10].to_f
+      hacker.rating = row[0].to_f
       hacker.save
     end
     puts "Ratings complete"
@@ -146,14 +179,14 @@ namespace :import do
       next if row[0].nil?
 
       hacker = Hacker.find_by_email(row[3])
-
-      hacker.status = row[5]
+      
+      hacker.status_id = Status.find_by_name(row[5]).id
       hacker.save
     end
     puts "Statuses Complete"
   end
 
   desc "Import Everything"
-  task :all => [:schools, :hackers, :teams, :github, :ratings, :team_ratings, :statuses]
+  task :all => [:schools, :hackers, :teams, :ratings, :team_ratings, :statuses]
 
 end
