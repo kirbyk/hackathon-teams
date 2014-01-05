@@ -1,5 +1,5 @@
 class HackersController < ApplicationController
-  before_filter :authenticate_user!, :prepare_schools, :prepare_teams
+  before_filter :authenticate_user!, :prepare_schools, :prepare_teams, :prepare_statuses
   before_action :set_hacker, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
@@ -65,14 +65,16 @@ class HackersController < ApplicationController
   end
 
   private
-    # add the @schools = School.all to the before action so avail for all actions  
     def prepare_schools
       @schools = School.all
     end
 
-    # add the @teams = Team.all to the before action so avail for all actions  
     def prepare_teams
       @teams = Team.all
+    end
+
+    def prepare_statuses
+      @statuses = Status.all
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -82,7 +84,7 @@ class HackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hacker_params
-      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :email, :github, :tshirt_size, :why)
+      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :status, :status_id, :email, :github, :tshirt_size, :why)
     end
 
     def sort_column

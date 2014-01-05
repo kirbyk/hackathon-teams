@@ -20,6 +20,14 @@
     <%= f.text_field :lname %>
   </div>
   <div class="field">
+    <%= f.label :status %><br>
+    <%= f.collection_select :status_id, @statuses, :id, :name, {:include_blank => "Please select"} %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.text_field :rating %>
+  </div>
+  <div class="field">
     <%= f.label :school %><br>
     <%= f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"} %>
   <div class="field">
@@ -40,7 +48,7 @@
   </div>
   <div class="field">
     <%= f.label :why %><br>
-    <%= f.text_area :why %>
+    <%= f.text_area :why, :cols => 50, :rows => 10 %>
   </div>
   <div class="actions">
     <%= f.submit %>
