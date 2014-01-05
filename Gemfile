@@ -12,6 +12,7 @@ gem 'spreadsheet'
 gem 'devise'
 gem 'nokogiri'
 gem "bootstrap-sass", "~> 3.0.3.0"
+gem 'bootstrap-datepicker-rails'
 
 group :doc do
   gem 'sdoc', require: false
