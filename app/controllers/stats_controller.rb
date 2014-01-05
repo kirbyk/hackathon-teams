@@ -1,4 +1,6 @@
 class StatsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     
     @schools = ['Purdue University','UIUC','University of Wisconsin - Madison',
