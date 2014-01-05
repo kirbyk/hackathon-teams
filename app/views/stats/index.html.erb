@@ -1,7 +1,9 @@
 <table>
   <thead>
     <th>School</th>
+    <th>Commited</th>
     <th>Accepted</th>
+    <th>Declined</th>
     <th>Waitlisted</th>
     <th>Rejected</th>
     <th>Applicants</th>
@@ -11,11 +13,22 @@
     <% schools.each do |school| %>
       <tr>
         <td><%= school %></td>
+        <td><%= @commited[school] %></td>
         <td><%= @accepted[school] %></td>
+        <td><%= @declined[school] %></td>
         <td><%= @waitlisted[school] %></td>
         <td><%= @rejected[school] %></td>
         <td><%= @applied[school] %></td>
       </tr>
     <% end %>
+      <tr>
+        <td>Total</td>
+        <td><%= @total[:commited] %></td>
+        <td><%= @total[:accepted] %></td>
+        <td><%= @total[:declined] %></td>
+        <td><%= @total[:waitlisted] %></td>
+        <td><%= @total[:rejected] %></td>
+        <td><%= @total[:applied] %></td>
+      </tr>
   </tbody>
 </table>
