@@ -1,6 +1,6 @@
-<h1>Listing teams</h1>
+<h1>Teams</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Team</th>
@@ -20,14 +20,10 @@
 
   <tbody>
     <% @teams.each do |team| %>
-      <tr>
-        <td><%= link_to "Team #{team.id}", team %></td>
-        <td><%= '%.2f' % team.rating_avg if team.rating_avg %></td>
-      </tr>
       <% team.hackers.each do |hacker| %>
         <tr>
-          <td></td>
-          <td></td>
+          <td><%= link_to "Team #{team.id}", team %></td>
+          <td><%= '%.2f' % team.rating_avg if team.rating_avg %></td>
           <td><%= hacker.status %></td>
           <td><%= hacker.rating %></td>
           <td><%= hacker.fname %></td>
