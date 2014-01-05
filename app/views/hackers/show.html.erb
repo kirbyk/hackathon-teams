@@ -1,59 +1,66 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Fname:</strong>
-  <%= @hacker.fname %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1><%= @hacker.fname + ' ' + @hacker.lname %></h1>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Fname:</strong>
+      <%= @hacker.fname %>
+    </li>
 
-<p>
-  <strong>Lname:</strong>
-  <%= @hacker.lname %>
-</p>
+    <li class="list-group-item">
+      <strong>Lname:</strong>
+      <%= @hacker.lname %>
+    </li>
 
-<p>
-  <strong>Status:</strong>
-  <%= @hacker.status.name if @hacker.status %>
-</p>
+    <li class="list-group-item">
+      <strong>Status:</strong>
+      <%= @hacker.status.name if @hacker.status %>
+    </li>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @hacker.rating %>
-</p>
+    <li class="list-group-item">
+      <strong>Rating:</strong>
+      <%= @hacker.rating %>
+    </li>
 
-<p>
-  <strong>School:</strong>
-  <%= school_link @hacker.school.name %>
-</p>
+    <li class="list-group-item">
+      <strong>School:</strong>
+      <%= school_link @hacker.school.name %>
+    </li>
 
-<p>
-  <strong>Team:</strong>
-  <%= @hacker.team.members %>
-</p>
+    <li class="list-group-item">
+      <strong>Team:</strong>
+      <%= @hacker.team.members %>
+    </li>
 
-<p>
-  <strong>Team Rating:</strong>
-  <%= @hacker.team.rating_avg %>
-</p>
+    <li class="list-group-item">
+      <strong>Team Rating:</strong>
+      <%= @hacker.team.rating_avg %>
+    </li>
 
-<p>
-  <strong>Email:</strong>
-  <%= @hacker.email %>
-</p>
+    <li class="list-group-item">
+      <strong>Email:</strong>
+      <%= @hacker.email %>
+    </li>
 
-<p>
-  <strong>Github:</strong>
-  <%= @hacker.github %>
-</p>
+    <li class="list-group-item">
+      <strong>Github:</strong>
+      <%= @hacker.github %>
+    </li>
 
-<p>
-  <strong>Tshirt size:</strong>
-  <%= @hacker.tshirt_size %>
-</p>
+    <li class="list-group-item">
+      <strong>Tshirt size:</strong>
+      <%= @hacker.tshirt_size %>
+    </li>
 
-<p>
-  <strong>Why:</strong>
-  <%= @hacker.why %>
-</p>
+    <li class="list-group-item">
+      <strong>Why:</strong>
+      <%= @hacker.why %>
+    </li>
+  </ul>
+</div>
 
 <%= link_to 'Edit', edit_hacker_path(@hacker) %> |
 <%= link_to 'Back', hackers_path %>
