@@ -1,6 +1,13 @@
 class StatsController < ApplicationController
   def index
     
+    @schools = [:'Purdue University',:'UIUC',:'University of Wisconsin - Madison',
+                :'Rutgers University',:'Carnegie Mellon University',
+                :'Ohio State University',:'University of Maryland',
+                :'University of Waterloo',:'University of Michigan',
+                :'Rose-Hulman Institute of Technology',:'Northwestern University',
+                :'University of Iowa']    
+
     @applied = Hash.new
     School.all.each { |s| @applied[s.name.to_sym] = s.hackers.count }
 
@@ -31,6 +38,9 @@ class StatsController < ApplicationController
     @total[:rejected] = Hacker.where("status_id = #{rejected_id}").count
     @total[:commited] = Hacker.where("status_id = #{commited_id}").count
     @total[:declined] = Hacker.where("status_id = #{declined_id}").count
+
+    @other = Hash.new
+    @other[:applied] = @applied.each_value.inject(:+)
 
   end
 end
