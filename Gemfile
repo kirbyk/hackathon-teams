@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'spreadsheet'
 gem 'devise'
 gem 'nokogiri'
+gem "bootstrap-sass", "~> 3.0.3.0"
 
 group :doc do
   gem 'sdoc', require: false
