@@ -22,9 +22,11 @@
     <% @teams.each do |team| %>
       <% team.hackers.each do |hacker| %>
         <tr>
-          <td><%= link_to "Team #{team.id}", team %></td>
-          <td><%= '%.2f' % team.rating_avg if team.rating_avg %></td>
-          <td><%= hacker.status %></td>
+          <% if hacker == team.hackers.first %>
+            <td rowspan="<%= team.hackers.count %>" class="middle"><%= link_to "Team #{team.id}", team %></td>
+            <td rowspan="<%= team.hackers.count %>" class="middle"><%= '%.2f' % team.rating_avg if team.rating_avg %></td>
+          <% end %>
+          <td><%= hacker.status.name %></td>
           <td><%= hacker.rating %></td>
           <td><%= hacker.fname %></td>
           <td><%= hacker.lname %></td>
