@@ -11,49 +11,52 @@
     </div>
   <% end %>
 
-  <div class="form">
-    <div class="panel-body">
-      <div class="form-group">
-        <%= f.label :fname %><br>
-        <%= f.text_field :fname %>
-      </div>
-      <div class="field">
-        <%= f.label :lname %><br>
-        <%= f.text_field :lname %>
-      </div>
-      <div class="field">
-        <%= f.label :status %><br>
-        <%= f.collection_select :status_id, @statuses, :id, :name, {:include_blank => "Please select"} %>
-      </div>
-      <div class="field">
-        <%= f.label :rating %><br>
-        <%= f.text_field :rating %>
-      </div>
-      <div class="field">
-        <%= f.label :school %><br>
-        <%= f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"} %>
-      <div class="field">
-        <%= f.label :team %><br>
-        <%= f.collection_select :team_id, @teams, :id, :members, {:include_blank => "Please select"} %>
-      </div>
-      <div class="field">
-        <%= f.label :email %><br>
-        <%= f.text_field :email %>
-      </div>
-      <div class="field">
-        <%= f.label :github %><br>
-        <%= f.text_field :github %>
-      </div>
-      <div class="field">
-        <%= f.label :tshirt_size %><br>
-        <%= f.text_field :tshirt_size %>
-      </div>
-      <div class="field">
-        <%= f.label :why %><br>
-        <%= f.text_area :why, :cols => 50, :rows => 10 %>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
+  <div class="panel panel-default">
+    <div class="form">
+      <div class="panel-body">
+        <div class="form-group">
+          <%= f.label :fname %>
+          <%= f.text_field :fname, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :lname %>
+          <%= f.text_field :lname, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :status %>
+          <%= f.collection_select :status_id, @statuses, :id, :name, {:include_blank => "Please select"}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :rating %>
+          <%= f.text_field :rating, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :school %>
+          <%= f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :team %>
+          <%= f.collection_select :team_id, @teams, :id, :members, {:include_blank => "Please select"}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :github %>
+          <%= f.text_field :github, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :tshirt_size %>
+          <%= f.text_field :tshirt_size, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :why %>
+          <%= f.text_area :why, :rows => 10, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
   </div>
