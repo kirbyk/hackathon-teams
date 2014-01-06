@@ -1,3 +1,87 @@
-// Place all the styles related to the hackers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.carousel-images {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:black;
+  overflow:hidden
+}
+.index-carousel-item.active {
+  opacity:1;
+  visibility:visible;
+  z-index:10;
+  height:100%;
+  -webkit-transition:opacity 900ms ease;
+  -moz-transition:opacity 900ms ease;
+  -o-transition:opacity 900ms ease;
+  transition:opacity 900ms ease
+}
+.index-carousel-item.active .index-carousel-item-wrapper {
+  display:table;
+  height:100%;
+  margin:0 auto
+}
+.index-carousel-background {
+  position:absolute;
+  top:-150px;
+  left:-150px;
+  right:0;
+  bottom:0;
+  z-index:1
+}
+.index-carousel-background>img {
+  position:relative;
+  display:block;
+  min-width:100%;
+  min-height:100%;
+  z-index:0;
+  margin:0 auto
+}
+.index-carousel-overlay {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:2
+}
+.mlb-victis .index-carousel-overlay {
+  background:-webkit-linear-gradient(45deg, #e7cb4c -12%, #313131 43%);
+  background:-moz-linear-gradient(45deg, #e7cb4c -12%, #313131 43%);
+  background:-o-linear-gradient(45deg, #e7cb4c -12%, #313131 43%);
+  background:linear-gradient(45deg, #e7cb4c -12%, #313131 43%);
+  opacity:0.85
+}
+.index-carousel-content {
+  text-align:center;
+  display:table-cell;
+  vertical-align:middle;
+  position:relative;
+  z-index:10;
+  max-width:400px
+}
+.index-carousel-title {
+  margin:0 auto 8px auto;
+  color:white;
+  font-size:1.6em;
+  font-weight:300;
+  line-height:1.2em;
+  text-align:center
+}
+.index-carousel-description {
+  font-size:1em;
+  color:rgba(255, 255, 255, 0.8);
+  font-weight:300;
+  padding:0 30px;
+  margin:0 auto 10px auto
+}
+.index-carousel-link {
+  display:inline-block;
+  word-wrap:normal;
+  font-size:1em;
+  font-weight:400;
+  line-height:1.4em;
+  color:rgba(255, 255, 255, 0.8);
+  border-bottom:1px dotted rgba(255, 255, 255, 0.2)
+}
