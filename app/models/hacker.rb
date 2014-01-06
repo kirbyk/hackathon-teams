@@ -10,4 +10,5 @@ class Hacker < ActiveRecord::Base
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
+  validates_format_of :resume_file_name, :with => %r{\.(docx|doc|pdf)\z}i
 end
