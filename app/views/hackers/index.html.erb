@@ -1,6 +1,6 @@
 <h1>Hackers</h1>
 
-<table class="table table-striped" id="clickable">
+<table class="table" id="clickable">
   <thead>
     <tr>
       <th><%= sortable "status" %></th>
@@ -45,6 +45,12 @@
               window.location = href;
           }
       });
+
+      $('#clickable tr').hover(function() {
+          $(this).addClass('hover');
+        }, function() {
+          $(this).removeClass('hover');
+});
 
   });
 </script>
