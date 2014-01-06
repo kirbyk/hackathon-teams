@@ -1,6 +1,6 @@
 <h1>Schools</h1>
 
-<table class="table table-striped">
+<table class="table table-striped" id="clickable">
   <thead>
     <tr>
       <th>Name</th>
@@ -25,3 +25,16 @@
 <br>
 
 <%= link_to 'New School', new_school_path %>
+
+<script>
+  $(document).ready(function() {
+
+      $('#clickable tr').click(function() {
+          var href = $(this).find("a").attr("href");
+          if(href) {
+              window.location = href;
+          }
+      });
+
+  });
+</script>
