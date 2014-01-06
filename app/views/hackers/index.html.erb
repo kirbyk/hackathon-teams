@@ -14,7 +14,7 @@
 
   <tbody>
     <% @hackers.each do |hacker| %>
-      <tr class="clickable" href="<%= hacker_path(hacker) %>">
+      <tr class="clickable pointer" href="<%= hacker_path(hacker) %>">
         <td><%= hacker.status.name if hacker.status %></td>
         <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
         <td><%= hacker.fname %></td>

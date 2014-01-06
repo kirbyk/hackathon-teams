@@ -22,11 +22,16 @@
   vertical-align: middle !important;
 }
 
-.clickable {
+.pointer {
   cursor: pointer;
 }
 
 .hover > td,
 .hover > th {
   background-color: #aeaeae !important;
+}
+
+.group-stripe > td,
+.group-stripe > th {
+  background-color: #f9f9f9;
 }

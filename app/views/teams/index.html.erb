@@ -1,6 +1,6 @@
 <h1>Teams <%= link_to 'New Team', new_team_path, class: 'btn btn-primary' %></h1>
 
-<table class="table table-striped">
+<table class="table">
   <thead>
     <tr>
       <th>Team</th>
@@ -10,15 +10,15 @@
       <th>Fname</th>
       <th>Lname</th>
       <th>School</th>
-      <th>Email</th>
       <th>Github</th>
     </tr>
   </thead>
 
   <tbody>
+    <% i=0 %>
     <% @teams.each do |team| %>
       <% team.hackers.each do |hacker| %>
-        <tr class="clickable" href="<%= hacker_path(hacker) %>">
+        <tr class="pointer <%= 'group-stripe' if i%2 == 0 %>" href="<%= hacker_path(hacker) %>">
           <% if hacker == team.hackers.first %>
             <td rowspan="<%= team.hackers.count %>" class="middle"><%= link_to "Team #{team.id}", team %></td>
             <td rowspan="<%= team.hackers.count %>" class="middle"><%= '%.2f' % team.rating_avg if team.rating_avg %></td>
@@ -28,10 +28,13 @@
           <td><%= hacker.fname %></td>
           <td><%= hacker.lname %></td>
           <td><%= hacker.school.name if hacker.school %></td>
-          <td><%= hacker.email %></td>
           <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
         </tr>
       <% end %>
+      <% i+=1 %>
     <% end %>
   </tbody>
 </table>
+<div class="center">
+  <%= will_paginate @hackers, renderer: BootstrapPagination::Rails %>
+</div>
