@@ -54,6 +54,15 @@
       <strong>Why:</strong>
       <%= @hacker.why %>
     </li>
+
+    <li class="list-group-item">
+      <strong>Resume:</strong>
+      <% if @hacker.resume.url != '/resumes/original/missing.png' %>
+        <%= link_to 'Resume', @hacker.resume.url %>
+      <% else %>
+        This hacker does not have a resume.
+      <% end %>
+    </li>
   </ul>
 </div>
 <div>
