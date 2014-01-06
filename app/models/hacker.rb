@@ -5,9 +5,9 @@ class Hacker < ActiveRecord::Base
   belongs_to :status
   has_attached_file :resume,
     :storage => :s3,
-	  :bucket => ENV['AWS_BUCKET'],
     :s3_credentials => {
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+	    :bucket => "bm-resumes",
+      :access_key_id => "AKIAJXJUB7RVDVG3SAVA",
+      :secret_access_key => "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"
     }
 end
