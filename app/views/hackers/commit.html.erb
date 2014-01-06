@@ -1,0 +1,5 @@
+<%= form_tag({controller: "hackers", action: "commited"}, method: "get", class: "nifty_form") do %>
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %>
+  <%= submit_tag("Search") %>
+<% end %>
