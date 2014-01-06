@@ -7,7 +7,7 @@ class HackersController < ApplicationController
   # GET /hackers.json
   def index
     # @hackers = Hacker.all.group("team_id")
-    @hackers = Hacker.order(sort_column + " " + sort_direction)
+    @hackers = Hacker.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 200)
   end
 
   # GET /hackers/1
@@ -22,6 +22,7 @@ class HackersController < ApplicationController
 
   # GET /hackers/1/edit
   def edit
+    @tshirts = ['XS', 'Small', 'Medium', 'Large', 'XL', 'XXL', '3XL']
   end
 
   # POST /hackers

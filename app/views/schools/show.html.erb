@@ -2,29 +2,25 @@
 
 <h1><%= @school.name %></h1>
 
-<table class="table table-striped" id="clickable">
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>Status</th>
+      <th>Rating</th>
       <th>Fname</th>
       <th>Lname</th>
-      <th>School</th>
-      <th>Email</th>
       <th>Github</th>
-      <th>Tshirt size</th>
-      <th>Why</th>
     </tr>
   </thead>
 
   <tbody>
     <% @school.hackers.each do |hacker| %>
-      <tr>
+      <tr class="clickable" href="<%= hacker_path(hacker) %>">
+        <td><%= hacker.status.name if hacker.status %></td>
+        <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>
-        <td><%= hacker.school.name if hacker.school %></td>
-        <td><%= hacker.email %></td>
-        <td><%= hacker.github %></td>
-        <td><%= hacker.tshirt_size %></td>
-        <td><%= hacker.why %></td>
+        <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
       </tr>
     <% end %>
   </tbody>
