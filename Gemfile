@@ -13,6 +13,8 @@ gem "bootstrap-sass", "~> 3.0.3.0"
 gem 'bootstrap-datepicker-rails'
 gem "will_paginate", "~> 3.0.5"
 gem "will_paginate-bootstrap", "~> 1.0.0"
+gem "paperclip", "~> 3.0"
+gem "aws-sdk", "~> 1.31.3"
 
 group :doc do
   gem 'sdoc', require: false
