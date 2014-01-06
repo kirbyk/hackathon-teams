@@ -26,6 +26,10 @@
           </div>
         </div>
         <div class="form-group">
+          <%= f.label :resume %>
+          <%= f.file_field :resume, class: "form-control" %>
+        </div>
+        <div class="form-group">
           <%= f.submit "Commit", class: 'btn btn-primary' %>
         </div>
       </div>
