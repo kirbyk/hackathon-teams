@@ -16,3 +16,7 @@
 /tmp
 .DS_Store
 *.txt
+
+# Ignore local env variable intializer
+/config/application.yml
+config/initializers/s3_constants.rb
