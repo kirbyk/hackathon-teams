@@ -21,3 +21,12 @@
 .middle {
   vertical-align: middle !important;
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+.hover > td,
+.hover > th {
+  background-color: #aeaeae !important;
+}
