@@ -10,7 +10,7 @@
 
   <tbody>
     <% @schools.each do |school| %>
-      <tr class="clickable" href="<%= school_path(school) %>">
+      <tr class="clickable pointer" href="<%= school_path(school) %>">
         <td><%= school.name %></td>
         <td><%= school.hackers.count %></td>
       </tr>
