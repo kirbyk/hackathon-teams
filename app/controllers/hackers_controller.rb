@@ -1,5 +1,5 @@
 class HackersController < ApplicationController
-  before_filter :prepare_schools, :prepare_teams, :prepare_statuses
+  before_filter :prepare_schools, :prepare_teams, :prepare_statuses, :prepare_tshirts
   before_action :authenticate_user!, :except => [:commit, :commited]
   before_action :set_hacker, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
@@ -30,7 +30,6 @@ class HackersController < ApplicationController
 
   # GET /hackers/1/edit
   def edit
-    @tshirts = ['XS', 'Small', 'Medium', 'Large', 'XL', 'XXL', '3XL']
   end
 
   # POST /hackers
@@ -86,6 +85,9 @@ class HackersController < ApplicationController
       @statuses = Status.all
     end
 
+    def prepare_tshirts
+      @tshirts = ['XS', 'Small', 'Medium', 'Large', 'XL', 'XXL', '3XL']
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_hacker
       @hacker = Hacker.find(params[:id])
