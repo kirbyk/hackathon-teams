@@ -1,5 +1,6 @@
 class HackersController < ApplicationController
-  before_filter :authenticate_user!, :prepare_schools, :prepare_teams, :prepare_statuses
+  before_filter :prepare_schools, :prepare_teams, :prepare_statuses
+  before_action :authenticate_user!, :except => [:commit, :commited]
   before_action :set_hacker, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
@@ -13,6 +14,13 @@ class HackersController < ApplicationController
   # GET /hackers/1
   # GET /hackers/1.json
   def show
+  end
+
+  def commit
+  end
+
+  def commited
+    @hacker = Hacker.find_by_email(params[:email])
   end
 
   # GET /hackers/new
