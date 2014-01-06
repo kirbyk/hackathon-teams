@@ -1,65 +1,78 @@
-<%= form_for(@hacker) do |f| %>
-  <% if @hacker.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@hacker.errors.count, "error") %> prohibited this hacker from being saved:</h2>
+<div class="panel panel-default col-md-8 col-md-offset-2">
+  <%= form_for(@hacker) do |f| %>
+    <% if @hacker.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@hacker.errors.count, "error") %> prohibited this hacker from being saved:</h2>
 
-      <ul>
-      <% @hacker.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="panel panel-default">
+        <ul>
+        <% @hacker.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="form">
+      <div class="panel-heading">
+        <h3> <%= params[:action] == 'edit' ? "Editing" : "New" %> <%= link_to 'Back', @hacker, :class => 'btn btn-default' %></h3>
+      </div>
       <div class="panel-body">
-        <div class="form-group">
-          <%= f.label :fname %>
-          <%= f.text_field :fname, class: 'form-control' %>
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <%= f.label :First %>
+            <%= f.text_field :fname, class: 'form-control' %>
+          </div>
+          <div class="form-group col-xs-6">
+            <%= f.label :Last %>
+            <%= f.text_field :lname, class: 'form-control' %>
+          </div>
         </div>
-        <div class="form-group">
-          <%= f.label :lname %>
-          <%= f.text_field :lname, class: 'form-control' %>
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <%= f.label :email %>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+          <div class="form-group col-xs-6">
+            <%= f.label :school %>
+            <%= f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}, class: 'form-control' %>
+          </div>
         </div>
-        <div class="form-group">
-          <%= f.label :status %>
-          <%= f.collection_select :status_id, @statuses, :id, :name, {:include_blank => "Please select"}, class: 'form-control' %>
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <%= f.label :rating %>
+            <%= f.text_field :rating, class: 'form-control' %>
+          </div>
+          <div class="form-group col-xs-6">
+            <%= f.label :github %>
+            <%= f.text_field :github, class: 'form-control' %>
+          </div>
         </div>
-        <div class="form-group">
-          <%= f.label :date_contacted %>
-          <%= f.text_field :contact_date, class: 'form-control dp-sel' %>
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <%= f.label :status %>
+            <%= f.collection_select :status_id, @statuses, :id, :name, {:include_blank => "Please select"}, class: 'form-control' %>
+          </div>
+          <div class="form-group col-xs-6">
+            <%= f.label :date_contacted %>
+            <%= f.text_field :contact_date, class: 'form-control dp-sel' %>
+          </div>
         </div>
-        <div class="form-group">
-          <%= f.label :rating %>
-          <%= f.text_field :rating, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :school %>
-          <%= f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :team %>
-          <%= f.collection_select :team_id, @teams, :id, :members, {:include_blank => "Please select"}, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.text_field :email, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :github %>
-          <%= f.text_field :github, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :tshirt_size %>
-          <%= f.text_field :tshirt_size, class: 'form-control' %>
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <%= f.label :team %>
+            <%= f.collection_select :team_id, @teams, :id, :members, {:include_blank => "Please select"}, class: 'form-control' %>
+          </div>
+          <div class="form-group col-xs-6">
+            <%= f.label :tshirt_size %>
+            <%= f.select(:tshirt_size, @tshirts, {}, { :class => 'form-control' }) %>
+          </div>
         </div>
         <div class="form-group">
           <%= f.label :why %>
-          <%= f.text_area :why, :rows => 10, class: 'form-control' %>
+          <%= f.text_area :why, :rows => 5, class: 'form-control' %>
         </div>
         <div class="form-group">
           <%= f.submit class: 'btn btn-primary' %>
+          <%= (link_to 'Delete Hacker', @hacker, method: :delete, data: {confirm: "Are you sure?"} , class: 'btn btn-danger') if params[:action] == 'edit' %>
         </div>
       </div>
     </div>

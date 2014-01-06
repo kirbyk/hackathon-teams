@@ -1,6 +1,6 @@
-<h1>Hackers</h1>
+<h1>Hackers <%= link_to 'New Hacker', new_hacker_path, class: 'btn btn-primary' %></h1>
 
-<table class="table" id="clickable">
+<table class="table table-striped">
   <thead>
     <tr>
       <th><%= sortable "status" %></th>
@@ -9,48 +9,22 @@
       <th><%= sortable "lname" %></th>
       <th><%= sortable "school" %></th>
       <th><%= sortable "github" %></th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @hackers.each do |hacker| %>
-      <tr>
+      <tr class="clickable" href="<%= hacker_path(hacker) %>">
         <td><%= hacker.status.name if hacker.status %></td>
         <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>
         <td><%= hacker.school.name if hacker.school %></td>
         <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
-        <td><%= link_to 'Show', hacker %></td>
-        <td><%= link_to 'Edit', edit_hacker_path(hacker) %></td>
-        <td><%= link_to 'Destroy', hacker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Hacker', new_hacker_path %>
-
-<script>
-  $(document).ready(function() {
-
-      $('#clickable tr').click(function() {
-          var href = $(this).find("a").eq(1).attr("href");
-          if(href) {
-              window.location = href;
-          }
-      });
-
-      $('#clickable tr').hover(function() {
-          $(this).addClass('hover');
-        }, function() {
-          $(this).removeClass('hover');
-});
-
-  });
-</script>
+<div class="center">
+  <%= will_paginate @hackers, renderer: BootstrapPagination::Rails %>
+</div>
