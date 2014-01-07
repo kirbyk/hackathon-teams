@@ -43,13 +43,17 @@
                       <%= f.text_field :github, class: 'form-control' %>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <%= f.label :resume %>
-                    <% if @hacker.resume.url == '/resumes/original/missing.png' %>
-                      <%= f.file_field :resume, :required => true %>
-                    <% else %>
-                      <%= f.file_field :resume %>
-                    <% end %>                    
+                  <div class="form-group center-file-field">
+                    <div class="row">
+                      <div class="text-center">
+                        <%= f.label :resume %>
+                        <% if @hacker.resume.url == '/resumes/original/missing.png' %>
+                          <%= f.file_field :resume, :required => true %>
+                        <% else %>
+                          <%= f.file_field :resume %>
+                        <% end %>     
+                      </div>
+                    </div>               
                   </div>
                   <% if @hacker.resume_content_type == 'application/pdf' || @hacker.resume_content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || @hacker.resume_content_type == 'application/msword' %>
                     <div class="form-group">
