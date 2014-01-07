@@ -19,3 +19,6 @@
 
 # Ignore local env variable intializer
 /config/app_environment_variables.rb
+
+#locally stored resumes
+/public/system/hackers
