@@ -10,7 +10,12 @@
                 <h3>Complete the form below and click Commit to confirm your attendance.</h3>
               </div>
               <div class="panel-body">
-                <p id="notice"><%= notice %></p>
+                <% if notice %>
+                  <p class="alert alert-success"><%= notice %></p>
+                <% end %>
+                <% if alert %>
+                  <p class="alert alert-danger"><%= alert %></p>
+                <% end %>
                 <div class="form">
                   <div class="row">
                     <div class="form-group col-xs-6">
