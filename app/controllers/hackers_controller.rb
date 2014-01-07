@@ -26,9 +26,11 @@ class HackersController < ApplicationController
   def update_commit
     respond_to do |format|
       if @hacker.update(hacker_params)
-        format.html { redirect_to action: 'commited', email: @hacker.email, notice: 'Hacker was successfully updated.' }
+        flash[:notice] = "You have successfully commited to attending BoilerMake!"
+        format.html { redirect_to action: 'commited', email: @hacker.email }
       else
-        format.html { render action: 'commited' }
+        flash[:notice] = "There was an error with your commitment to BoilerMake. Please make sure to upload your resume as a PDF. If problems persist email - kirby@purdue.edu."
+        format.html { render action: 'commited', email: @hacker.email }
       end
     end
   end
