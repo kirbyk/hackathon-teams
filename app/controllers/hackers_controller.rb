@@ -1,7 +1,7 @@
 class HackersController < ApplicationController
   before_filter :prepare_schools, :prepare_teams, :prepare_statuses, :prepare_tshirts
-  before_action :authenticate_user!, :except => [:commit, :commited]
-  before_action :set_hacker, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:commit, :commited, :update]
+  before_action :set_hacker, only: [:show, :edit, :update, :destroy, :update_commit]
   helper_method :sort_column, :sort_direction
 
   # GET /hackers
@@ -21,6 +21,16 @@ class HackersController < ApplicationController
 
   def commited
     @hacker = Hacker.find_by_email(params[:email])
+  end
+
+  def update_commit
+    respond_to do |format|
+      if @hacker.update(hacker_params)
+        format.html { redirect_to action: 'commited', email: @hacker.email, notice: 'Hacker was successfully updated.' }
+      else
+        format.html { render action: 'commited' }
+      end
+    end
   end
 
   # GET /hackers/new
