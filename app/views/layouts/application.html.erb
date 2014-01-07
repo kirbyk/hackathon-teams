@@ -7,7 +7,7 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render :partial => 'layouts/header' unless params[:action] == 'commit' || params[:action] == 'commited' %>
+  <%= render :partial => 'layouts/header' unless params[:action] == 'commit' || params[:action] == 'committed' %>
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag(:div, msg, class: "alert alert-info") %>

@@ -77,6 +77,7 @@ namespace :import do
       github = sanatize_github row[4]
 
       Hacker.create(fname: name[0], lname: name[1], school_id: school_id, email: row[3], github: github, tshirt_size: row[7], why: row[8])
+      puts name[0]
     end
     puts "Hackers Complete"
   end
@@ -149,6 +150,7 @@ namespace :import do
 
       hacker = Hacker.find_by_email(row[3])
 
+      next if hacker.nil?
       hacker.rating = row[0].to_f
       hacker.save
     end

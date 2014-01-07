@@ -3,7 +3,7 @@
 <table class="table table-striped">
   <thead>
     <th>School</th>
-    <th>Commited</th>
+    <th>Committed</th>
     <th>Accepted</th>
     <th>Declined</th>
     <th>Waitlisted</th>
@@ -14,7 +14,7 @@
     <% @schools.each do |school| %>
       <tr>
         <td><%= school %></td>
-        <td><%= @commited[school] %></td>
+        <td><%= @committed[school] %></td>
         <td><%= @accepted[school] %></td>
         <td><%= @declined[school] %></td>
         <td><%= @waitlisted[school] %></td>
@@ -24,7 +24,7 @@
     <% end %>
       <tr>
         <td>Other Schools</td>
-        <td><%= @other[:commited] %></td>
+        <td><%= @other[:committed] %></td>
         <td><%= @other[:accepted] %></td>
         <td><%= @other[:declined] %></td>
         <td><%= @other[:waitlisted] %></td>
@@ -33,7 +33,7 @@
       </tr>
       <tr>
         <td>Total</td>
-        <td><%= @total[:commited] %></td>
+        <td><%= @total[:committed] %></td>
         <td><%= @total[:accepted] %></td>
         <td><%= @total[:declined] %></td>
         <td><%= @total[:waitlisted] %></td>
