@@ -1,45 +1,61 @@
-<p id="notice"><%= notice %></p>
-<div class="panel panel-default col-md-8 col-md-offset-2">
-  <%= form_for @hacker, as: :hacker, url: "update_commit/#{@hacker.id}", method: :update_commit do |f| %>
-  <%# <%= form_for(@hacker) do |f| %1> %>
-    <div class="form">
-      <div class="panel-heading">
-        <h3>Congrats!</h3>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="form-group col-xs-6">
-            <%= f.label :First %>
-            <%= f.text_field :fname, class: 'form-control' %>
-          </div>
-          <div class="form-group col-xs-6">
-            <%= f.label :Last %>
-            <%= f.text_field :lname, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-xs-6">
-            <%= f.label :tshirt_size %>
-            <%= f.select(:tshirt_size, @tshirts, {}, { :class => 'form-control' }) %>
-          </div>
-          <div class="form-group col-xs-6">
-            <%= f.label :github %>
-            <%= f.text_field :github, class: 'form-control' %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :resume %>
-          <%= f.file_field :resume %>
-        </div>
-        <% if @hacker.resume.url != '/resumes/original/missing.png' %>
-          <div class="form-group">
-            <%= link_to 'View your uploaded resume', @hacker.resume.url %>
-          </div>
-        <% end %>
-        <div class="form-group">
-          <%= f.submit "Commit", class: 'btn btn-primary' %>
+
+
+<div class="index-carousel">
+  <div class="carousel-images">
+    <div class="carousel-item index-carousel-item mlb-victis active">
+      <div class="index-carousel-item-wrapper">
+        <section class="index-carousel-content">
+          <%= form_for @hacker, as: :hacker, url: "update_commit/#{@hacker.id}", method: :update_commit do |f| %>
+          <%# <%= form_for(@hacker) do |f| %1> %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>Congrats!</h3>
+              </div>
+              <div class="panel-body">
+                <p id="notice"><%= notice %></p>
+                <div class="form">
+                  <div class="row">
+                    <div class="form-group col-xs-6">
+                      <%= f.label :First %>
+                      <%= f.text_field :fname, class: 'form-control' %>
+                    </div>
+                    <div class="form-group col-xs-6">
+                      <%= f.label :Last %>
+                      <%= f.text_field :lname, class: 'form-control' %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-xs-6">
+                      <%= f.label :tshirt_size %>
+                      <%= f.select(:tshirt_size, @tshirts, {}, { :class => 'form-control' }) %>
+                    </div>
+                    <div class="form-group col-xs-6">
+                      <%= f.label :github %>
+                      <%= f.text_field :github, class: 'form-control' %>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :resume %>
+                    <%= f.file_field :resume %>
+                  </div>
+                  <% if @hacker.resume.url != '/resumes/original/missing.png' %>
+                    <div class="form-group">
+                      <%= link_to 'View your uploaded resume', @hacker.resume.url %>
+                    </div>
+                  <% end %>
+                  <div class="form-group">
+                    <%= f.submit "Commit", class: 'btn btn-primary' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </section>
+        <div class="index-carousel-overlay"></div>
+        <div class="index-carousel-background">
+          <%= image_tag("corec2.jpg") %>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
