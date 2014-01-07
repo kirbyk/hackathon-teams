@@ -15,7 +15,7 @@
                 <div class="form-group">
                   <div class="input-group">
                     <%= label_tag :email, "Email:", :class => 'left email-label' %>
-                    <%= text_field_tag :email, nil, :class => 'form-control email-btn' %>
+                    <%= text_field_tag :email, nil, :class => 'form-control email-btn', :required => true %>
                     <div class="input-group-btn">
                       <%= submit_tag "Submit", class: "btn btn-primary dropdown-toggle" %>
                     </div><!-- /btn-group -->
