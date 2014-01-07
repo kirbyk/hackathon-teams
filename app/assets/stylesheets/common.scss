@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.left {
+  float: left;
+}
+
 .accepted {
   color: green;
 }
@@ -34,4 +38,18 @@
 .group-stripe > td,
 .group-stripe > th {
   background-color: #f9f9f9;
+}
+
+.email-text {
+  margin-bottom: 15px;
+}
+
+.email-label {
+  margin: 5px 15px 0 15px;
+  font-size: large;
+}
+
+.email-btn {
+  float: left;
+  width: 200px !important;
 }
