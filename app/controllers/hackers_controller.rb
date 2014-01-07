@@ -20,10 +20,15 @@ class HackersController < ApplicationController
   end
 
   def committed
-    if Hacker.find_by_email(params[:email])
-      @hacker = Hacker.find_by_email(params[:email])
-    else
-      @hacker = nil
+    @hacker = Hacker.find_by_email(params[:email])
+
+    respond_to do |format|
+      if @hacker.nil? || (@hacker.status.name != 'Accepted' && @hacker.status.name != 'Committed')
+        flash[:notice] = "You entered an invalid email."
+        format.html { redirect_to action: 'commit' }
+      else
+        format.html { render action: 'committed', email: @hacker.email }
+      end
     end
   end
 
