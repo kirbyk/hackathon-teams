@@ -20,3 +20,4 @@
 # Ignore local env variable intializer
 /config/application.yml
 config/initializers/s3_constants.rb
+/config/app_environment_variables.rb
