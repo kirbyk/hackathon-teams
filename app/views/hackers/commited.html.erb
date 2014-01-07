@@ -40,7 +40,7 @@
                       <%= f.file_field :resume %>
                     <% end %>                    
                   </div>
-                  <% if @hacker.resume.url != '/resumes/original/missing.png' %>
+                  <% if @hacker.resume_content_type == 'application/pdf' %>
                     <div class="form-group">
                       <%= link_to 'View your uploaded resume', @hacker.resume.url %>
                     </div>
