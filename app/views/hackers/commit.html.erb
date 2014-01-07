@@ -9,7 +9,9 @@
                 <h3>Congratulations, you've been accepted to BoilerMake!</h3>
               </div>
               <div class="panel-body">
-                <p id="notice"><%= notice %></p>
+                <% if notice %>
+                  <p class="alert alert-danger"><%= notice %></p>
+                <% end %>
                 <div class="email-text">
                   Please enter the email you used to apply.
                 </div>

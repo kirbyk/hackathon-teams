@@ -24,7 +24,7 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.nil? || (@hacker.status.name != 'Accepted' && @hacker.status.name != 'Commited')
-        flash[:notice] = "Error"
+        flash[:notice] = "You entered an invalid email."
         format.html { redirect_to action: 'commit' }
       else
         format.html { render action: 'commited', email: @hacker.email }
@@ -40,7 +40,7 @@ class HackersController < ApplicationController
         flash[:notice] = "You have successfully commited to attending BoilerMake!"
         format.html { redirect_to action: 'commited', email: @hacker.email }
       else
-        flash[:notice] = "There was an error with your commitment to BoilerMake. Please make sure to upload your resume as a PDF. If problems persist email - kirby@purdue.edu."
+        flash[:alert] = "There was an error with your commitment to BoilerMake. Please make sure to upload your resume as a PDF. If problems persist email - kirby@purdue.edu."
         format.html { render action: 'commited', email: @hacker.email }
       end
     end
