@@ -7,15 +7,21 @@
           <%# <%= form_for(@hacker) do |f| %1> %>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3>Complete the form below and click Commit to confirm your attendance.</h3>
+                <% if @hacker.status.name != 'Commited' %>
+                  <h3>Complete the form below and click Commit to confirm your attendance.</h3>
+                <% else %>
+                  <h3>You have commited to attend BoilerMake!</h3>
+                <% end %>
               </div>
               <div class="panel-body">
+
                 <% if notice %>
                   <p class="alert alert-success"><%= notice %></p>
                 <% end %>
                 <% if alert %>
                   <p class="alert alert-danger"><%= alert %></p>
                 <% end %>
+
                 <div class="form">
                   <div class="row">
                     <div class="form-group col-xs-6">
