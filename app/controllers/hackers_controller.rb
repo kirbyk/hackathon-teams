@@ -1,6 +1,6 @@
 class HackersController < ApplicationController
   before_filter :prepare_schools, :prepare_teams, :prepare_statuses, :prepare_tshirts
-  before_action :authenticate_user!, :except => [:commit, :commited, :update]
+  before_action :authenticate_user!, :except => [:commit, :commited, :update, :update_commit]
   before_action :set_hacker, only: [:show, :edit, :update, :destroy, :update_commit]
   helper_method :sort_column, :sort_direction
 
