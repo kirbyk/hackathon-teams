@@ -40,7 +40,7 @@
                       <%= f.file_field :resume %>
                     <% end %>                    
                   </div>
-                  <% if @hacker.resume_content_type == 'application/pdf' %>
+                  <% if @hacker.resume_content_type == 'application/pdf' || @hacker.resume_content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || @hacker.resume_content_type == 'application/msword' %>
                     <div class="form-group">
                       <%= link_to 'View your uploaded resume', @hacker.resume.url %>
                     </div>
