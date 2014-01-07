@@ -34,7 +34,11 @@
                   </div>
                   <div class="form-group">
                     <%= f.label :resume %>
-                    <%= f.file_field :resume, :required => true %>
+                    <% if @hacker.resume.url == '/resumes/original/missing.png' %>
+                      <%= f.file_field :resume, :required => true %>
+                    <% else %>
+                      <%= f.file_field :resume %>
+                    <% end %>                    
                   </div>
                   <% if @hacker.resume.url != '/resumes/original/missing.png' %>
                     <div class="form-group">
