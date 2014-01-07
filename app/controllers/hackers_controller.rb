@@ -20,7 +20,11 @@ class HackersController < ApplicationController
   end
 
   def commited
-    @hacker = Hacker.find_by_email(params[:email])
+    if Hacker.find_by_email(params[:email])
+      @hacker = Hacker.find_by_email(params[:email])
+    else
+      @hacker = nil
+    end
   end
 
   def update_commit
