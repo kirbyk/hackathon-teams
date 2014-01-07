@@ -8,7 +8,9 @@ HackathonTeams::Application.routes.draw do
 
   root 'hackers#commit'
 
-  post 'commited' => 'hackers#commited'
+  get 'commited' => 'hackers#commited'
+
+  post 'update_commit/:id' => 'hackers#update_commit'
 
   get 'stats' => 'stats#index'
   # The priority is based upon order of creation: first created -> highest priority.
