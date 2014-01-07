@@ -26,6 +26,8 @@ class HackersController < ApplicationController
   def update_commit
     respond_to do |format|
       if @hacker.update(hacker_params)
+        @hacker.status_id = Status.find_by_name('Commited').id
+        @hacker.save
         flash[:notice] = "You have successfully commited to attending BoilerMake!"
         format.html { redirect_to action: 'commited', email: @hacker.email }
       else
