@@ -9,14 +9,20 @@
                 <h3>Congratulations, you've been accepted to BoilerMake!</h3>
               </div>
               <div class="panel-body">
-                <div class="form-group">
-                  <%= label_tag :email, "email:" %>
-                  <%= text_field_tag :email, nil, :class => 'form-control' %>
-                  <%= submit_tag "Submit", :class => 'btn btn-primary' %>
+                <div class="form">
+                  <div class="form-group">
+                    <%= label_tag :email, "email:" %>
+                  </div>
+                  <div class="form-group">
+                    <%= text_field_tag :email, nil, :class => 'form-control' %>
+                  </div>
+                  <div class="form-group">
+                    <%= submit_tag "Submit", :class => 'btn btn-primary' %>
+                  </div>
                 </div>
               </div>
             </div>
-        <% end %>
+          <% end %>
         </section>
         <div class="index-carousel-overlay"></div>
         <div class="index-carousel-background">
