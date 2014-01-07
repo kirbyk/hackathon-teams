@@ -41,7 +41,7 @@ class HackersController < ApplicationController
         format.html { redirect_to action: 'committed', email: @hacker.email }
       else
         flash[:alert] = "There was an error with your commitment to BoilerMake. Please make sure to upload your resume as a PDF. If problems persist email - kirby@purdue.edu."
-        format.html { render action: 'committed', email: @hacker.email }
+        format.html { redirect_to action: 'committed', email: @hacker.email }
       end
     end
   end
@@ -118,7 +118,7 @@ class HackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hacker_params
-      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :contact_date, :status, :status_id, :email, :github, :tshirt_size, :why, :resume)
+      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :contact_date, :status, :status_id, :email, :github, :tshirt_size, :why, :resume, :cell)
     end
 
     def sort_column
