@@ -8,7 +8,7 @@ HackathonTeams::Application.routes.draw do
 
   root 'hackers#commit'
 
-  get 'commited' => 'hackers#commited'
+  get 'committed' => 'hackers#committed'
 
   post 'update_commit/:id' => 'hackers#update_commit'
 
