@@ -40,7 +40,7 @@ class HackersController < ApplicationController
         flash[:notice] = "You have successfully committed to attending BoilerMake!"
         format.html { redirect_to action: 'committed', email: @hacker.email }
       else
-        flash[:notice] = "There was an error with your commitment to BoilerMake. Please make sure to upload your resume as a PDF. If problems persist email - kirby@purdue.edu."
+        flash[:alert] = "There was an error with your commitment to BoilerMake. Please make sure to upload your resume as a PDF. If problems persist email - kirby@purdue.edu."
         format.html { render action: 'committed', email: @hacker.email }
       end
     end
