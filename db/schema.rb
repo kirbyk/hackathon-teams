@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140106213941) do
+ActiveRecord::Schema.define(version: 20140107224749) do
 
   create_table "hackers", force: true do |t|
     t.string   "fname"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140106213941) do
     t.string   "resume_content_type"
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
+    t.string   "cell"
   end
 
   add_index "hackers", ["school_id"], name: "index_hackers_on_school_id"
