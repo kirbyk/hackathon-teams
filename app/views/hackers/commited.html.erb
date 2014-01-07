@@ -31,10 +31,15 @@
           <%= f.label :resume %>
           <%= f.file_field :resume %>
         </div>
+        <% if @hacker.resume.url != '/resumes/original/missing.png' %>
+          <div class="form-group">
+            <%= link_to 'View your uploaded resume', @hacker.resume.url %>
+          </div>
+        <% end %>
         <div class="form-group">
           <%= f.submit "Commit", class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
