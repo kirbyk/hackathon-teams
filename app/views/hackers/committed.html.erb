@@ -57,6 +57,20 @@
                         <% end %>     
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="form-group col-xs-6">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" required="required"> I agree to <a href="https://dl.dropboxusercontent.com/u/22196024/BoilerMake-Waiver.pdf">BoilerMake's Terms.</a>
+                        </label>
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" required="required"> I am 18 years or older.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                   <% if @hacker.resume_content_type == 'application/pdf' || @hacker.resume_content_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || @hacker.resume_content_type == 'application/msword' %>
                     <div class="form-group">
                       <%= link_to 'View your uploaded resume', @hacker.resume.url %>
