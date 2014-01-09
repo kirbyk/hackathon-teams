@@ -57,3 +57,7 @@
   float: left;
   width: 200px !important;
 }
+
+table.hacker-table tr:hover td {
+  background-color: #aeaeae;
+}

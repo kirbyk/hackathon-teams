@@ -12,8 +12,3 @@ $ ->
   $('.clickable').click ->
     href = $(this).attr('href')
     window.location = href if href
-
-  $(".clickable").hover (->
-    $(this).addClass("hover")
-  ), ->
-      $(this).removeClass("hover")
