@@ -6,7 +6,7 @@ class HackersController < ApplicationController
   # GET /hackers.json
   def index
     # @hackers = Hacker.all.group("team_id")
-    @hackers = Hacker.all
+    @hackers = Hacker.all.page(params[:page]).per(50)
   end
 
   # GET /hackers/1

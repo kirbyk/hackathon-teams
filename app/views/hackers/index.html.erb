@@ -1,4 +1,6 @@
-<h1>Listing hackers</h1>
+
+<h1> Listing hackers </h1>
+<%= paginate @hackers %>
 
 <table>
   <thead>
@@ -33,5 +35,6 @@
 </table>
 
 <br>
+<%= paginate @hackers %>
 
 <%= link_to 'New Hacker', new_hacker_path %>

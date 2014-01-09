@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'spreadsheet'
 gem 'devise'
 gem 'nokogiri'
+# for pagination
+gem "kaminari"
 
 group :doc do
   gem 'sdoc', require: false
