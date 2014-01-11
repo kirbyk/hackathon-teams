@@ -15,6 +15,7 @@ gem "will_paginate", "~> 3.0.5"
 gem "will_paginate-bootstrap", "~> 1.0.0"
 gem "paperclip", "~> 3.0"
 gem "aws-sdk", "~> 1.31.3"
+gem 'newrelic_rpm'
 
 group :doc do
   gem 'sdoc', require: false
@@ -24,6 +25,8 @@ group :development, :test do
   gem 'sqlite3'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'meta_request'
+  gem 'pry'
 end
 
 group :production do
