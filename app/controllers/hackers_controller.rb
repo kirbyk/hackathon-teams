@@ -3,13 +3,15 @@ class HackersController < ApplicationController
   before_action :authenticate_user!, :except => [:commit, :committed, :update, :update_commit]
   before_action :set_hacker, only: [:show, :edit, :update, :destroy, :update_commit]
   helper_method :sort_column, :sort_direction
-  load_and_authorize_resource :only => [:edit, :new, :destroy]
+  load_and_authorize_resource :only => [:index, :edit, :new, :destroy]
 
   # GET /hackers
   # GET /hackers.json
   def index
     # @hackers = Hacker.all.group("team_id")
-    @hackers = Hacker.order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 200)
+    @hackers = Hacker.accessible_by(current_ability).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 200)
+
+    # @hackers = Hacker.accessible_by(current_ability).all
   end
 
   # GET /hackers/1
