@@ -5,16 +5,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Fname</th>
-      <th>Lname</th>
+      <th>First</th>
+      <th>Last</th>
       <th>School</th>
-      <th>Email</th>
       <th>Github</th>
-      <th>Tshirt size</th>
-      <th>Why</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -24,17 +18,13 @@
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>
         <td><%= hacker.school.name if hacker.school %></td>
-        <td><%= hacker.email %></td>
         <td><%= hacker.github %></td>
-        <td><%= hacker.tshirt_size %></td>
-        <td><%= hacker.why %></td>
-        <td><%= link_to 'Show', hacker %></td>
-        <td><%= link_to 'Edit', edit_hacker_path(hacker) %></td>
-        <td><%= link_to 'Destroy', hacker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= link_to 'Back', teams_path, class: 'btn btn-primary' %>
-<%= link_to 'Edit', edit_team_path(@team), class: 'btn btn-primary' %>
+<% if can? :update, @team %>
+  <%= link_to 'Edit', edit_team_path(@team), class: 'btn btn-primary' %>
+<% end %>

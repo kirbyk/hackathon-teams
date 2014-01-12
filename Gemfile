@@ -16,6 +16,7 @@ gem "will_paginate-bootstrap", "~> 1.0.0"
 gem "paperclip", "~> 3.0"
 gem "aws-sdk", "~> 1.31.3"
 gem 'newrelic_rpm'
+gem 'cancan'
 
 group :doc do
   gem 'sdoc', require: false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107224749) do
+ActiveRecord::Schema.define(version: 20140111223012) do
 
   create_table "hackers", force: true do |t|
     t.string   "fname"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(version: 20140107224749) do
   end
 
   add_index "ratings", ["hacker_id"], name: "index_ratings_on_hacker_id"
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "role_id", null: false
+    t.integer "user_id", null: false
+  end
+
+  add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id"
+  add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id"
 
   create_table "schools", force: true do |t|
     t.string   "name"

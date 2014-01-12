@@ -27,4 +27,6 @@
 </table>
 
 <%= link_to 'Back', schools_path, class: 'btn btn-primary' %>
-<%= link_to 'Edit', edit_school_path(@school), class: 'btn btn-primary' %>
+<% if can? :update, @school %>
+  <%= link_to 'Edit', edit_school_path(@school), class: 'btn btn-primary' %>
+<% end %>

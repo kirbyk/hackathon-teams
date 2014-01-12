@@ -72,5 +72,7 @@
 </div>
 <div>
   <%= link_to 'Back', hackers_path, class: 'btn btn-primary' %>
-  <%= link_to 'Edit', edit_hacker_path(@hacker), class: 'btn btn-primary' %>
+  <% if can? :update, @hacker %>
+    <%= link_to 'Edit', edit_hacker_path(@hacker), class: 'btn btn-primary' %>
+  <% end %>
 </div>

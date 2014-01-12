@@ -1,4 +1,9 @@
-<h1>Teams <%= link_to 'New Team', new_team_path, class: 'btn btn-primary' %></h1>
+<h1>
+  Teams
+  <% if can? :create, @teams %>
+    <%= link_to 'New Team', new_team_path, class: 'btn btn-primary' %>
+  <% end %>
+</h1>
 
 <table class="table">
   <thead>
