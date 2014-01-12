@@ -1,4 +1,10 @@
-<h1>Hackers <%= link_to 'New Hacker', new_hacker_path, class: 'btn btn-primary' %></h1>
+<h1>
+  Hackers
+  <% if can? :create, @hackers %>
+    <%= link_to 'New Hacker', new_hacker_path, class: 'btn btn-primary' %>
+  <% end %>
+
+</h1>
 
 <table class="table table-striped hacker-table">
   <thead>

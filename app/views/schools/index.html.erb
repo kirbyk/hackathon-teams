@@ -1,4 +1,9 @@
-<h1>Schools <%= link_to 'New School', new_school_path, class: 'btn btn-primary' %></h1>
+<h1>
+  Schools
+  <% if can? :create, @schools %>
+    <%= link_to 'New School', new_school_path, class: 'btn btn-primary' %>
+  <% end %>
+</h1>
 
 <table class="table table-striped" id="clickable">
   <thead>

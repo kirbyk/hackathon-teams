@@ -3,6 +3,7 @@ class HackersController < ApplicationController
   before_action :authenticate_user!, :except => [:commit, :committed, :update, :update_commit]
   before_action :set_hacker, only: [:show, :edit, :update, :destroy, :update_commit]
   helper_method :sort_column, :sort_direction
+  load_and_authorize_resource :only => [:edit, :new, :destroy]
 
   # GET /hackers
   # GET /hackers.json
