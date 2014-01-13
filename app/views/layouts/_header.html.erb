@@ -1,27 +1,24 @@
 <div class="navbar navbar-default" role="navigation">
   <div class="container">
     <ul class="nav navbar-nav navbar-right">
-      <li>
-      <%= link_to 'Stats', stats_path %>
-      </li>
-      <li>
-      <%= link_to 'Hackers', hackers_path %>
-      </li>
-      <li>
-      <%= link_to 'Teams', teams_path %>
-      </li>
-      <li>
-      <%= link_to 'Schools', schools_path %>
-      </li>
+      <li><%= current_user.try(:email) %></li>
+      <% if can? :read, Stat %>
+        <li><%= link_to 'Stats', stats_path %></li>
+      <% end %>
+      <% if can? :read, Hacker %>
+        <li><%= link_to 'Hackers', hackers_path %></li>
+      <% end %>
+      <% if can? :read, Team %>
+        <li><%= link_to 'Teams', teams_path %></li>
+      <% end %>
+      <% if can? :read, School %>
+        <li><%= link_to 'Schools', schools_path %></li>
+      <% end %>
       <% if user_signed_in? %>
-        <li>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-        <li>
-      <%= link_to 'Signin', new_user_session_path %>
-      </li>
-    <% end %>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Signin', new_user_session_path %></li>
+      <% end %>
     </div>
   </div>
 </div>

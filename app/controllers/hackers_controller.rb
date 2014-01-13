@@ -8,10 +8,7 @@ class HackersController < ApplicationController
   # GET /hackers
   # GET /hackers.json
   def index
-    # @hackers = Hacker.all.group("team_id")
     @hackers = Hacker.accessible_by(current_ability).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 200)
-
-    # @hackers = Hacker.accessible_by(current_ability).all
   end
 
   # GET /hackers/1
