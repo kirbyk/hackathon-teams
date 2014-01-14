@@ -10,64 +10,82 @@
       <%= @hacker.status.name if @hacker.status %>
     </li>
 
-    <li class="list-group-item">
-      <strong>Date Contacted:</strong>
-      <%= @hacker.contact_date %>
-    </li>
+    <% if can? :show, :hackers, :contact_date %>
+      <li class="list-group-item">
+        <strong>Date Contacted:</strong>
+        <%= @hacker.contact_date %>
+      </li>
+    <% end %>
 
-    <li class="list-group-item">
-      <strong>Rating:</strong>
-      <%= @hacker.rating %>
-    </li>
+    <% if can? :show, :hackers, :rating %>
+      <li class="list-group-item">
+        <strong>Rating:</strong>
+        <%= @hacker.rating %>
+      </li>
+    <% end %>
 
     <li class="list-group-item">
       <strong>School:</strong>
       <%= school_link @hacker.school.name %>
     </li>
 
-    <li class="list-group-item">
-      <strong>Team:</strong>
-      <%= @hacker.team.members %>
-    </li>
+    <% if can? :show, :hackers, :team %>
+      <li class="list-group-item">
+        <strong>Team:</strong>
+        <%= @hacker.team.members %>
+      </li>
+    <% end %>
 
-    <li class="list-group-item">
-      <strong>Team Rating:</strong>
-      <%= @hacker.team.rating_avg %>
-    </li>
+    <% if can? :show, :hackers, :rating_avg %>
+      <li class="list-group-item">
+        <strong>Team Rating:</strong>
+        <%= @hacker.team.rating_avg %>
+      </li>
+    <% end %>
 
     <li class="list-group-item">
       <strong>Email:</strong>
       <%= @hacker.email %>
     </li>
 
-    <li class="list-group-item">
-      <strong>Github:</strong>
-      <%= @hacker.github %>
-    </li>
+    <% if can? :show, :hackers, :github %>
+      <li class="list-group-item">
+        <strong>Github:</strong>
+        <%= @hacker.github %>
+      </li>
+    <% end %>
 
-    <li class="list-group-item">
-      <strong>Tshirt size:</strong>
-      <%= @hacker.tshirt_size %>
-    </li>
+    <% if can? :show, :hackers, :tshirt_size %>
+      <li class="list-group-item">
+        <strong>Tshirt size:</strong>
+        <%= @hacker.tshirt_size %>
+      </li>
+    <% end %>
 
-    <li class="list-group-item">
-      <strong>Cell Phone:</strong>
-      <%= @hacker.cell %>
-    </li>
+    <% if can? :show, :hackers, :cell %>
+      <li class="list-group-item">
+        <strong>Cell Phone:</strong>
+        <%= @hacker.cell %>
+      </li>
+    <% end %>
 
-    <li class="list-group-item">
-      <strong>Why:</strong>
-      <%= @hacker.why %>
-    </li>
+    <% if can? :show, :hackers, :why %>
+      <li class="list-group-item">
+        <strong>Why:</strong>
+        <%= @hacker.why %>
+      </li>
+    <% end %>
 
-    <li class="list-group-item">
-      <strong>Resume:</strong>
-      <% if @hacker.resume.url != '/resumes/original/missing.png' %>
-        <%= link_to 'Resume', @hacker.resume.url %>
-      <% else %>
-        This hacker does not have a resume.
-      <% end %>
-    </li>
+    <% if can? :show, :hackers, :resume %>
+      <li class="list-group-item">
+        <strong>Resume:</strong>
+        <% if @hacker.resume.url != '/resumes/original/missing.png' %>
+          <%= link_to 'Resume', @hacker.resume.url %>
+        <% else %>
+          This hacker does not have a resume.
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </div>
 <div>

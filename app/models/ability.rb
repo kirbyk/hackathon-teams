@@ -4,16 +4,24 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user
 
+    can [:commit, :committed, :update_commit], :hackers
+
     if user.role? :super_admin
-      can :manage, :all
+      can :access, :all
     elsif user.role? :admin
-      can :read, :all
+      can [:index, :show], :all
     elsif user.role? :sponsor
-      can :read, Hacker, :status => Status.where("name = 'Committed'").first
-      can :read, School
+      can [:index, :show], :hackers, :status => Status.where("name = 'Committed'").first
+      can [:index, :show], :schools
     elsif user.role? :representative
-      can :read, Hacker, :status => Status.where("name = 'Committed'").first,
-                         :school => School.find(user.school_id)
+      can [:index, :show], :hackers,
+                           :status_id => Status.where("name = 'Committed'
+                                                      OR name = 'Accepted'
+                                                      OR name = 'Waitlisted'").map {|s| s.id},
+                           :school => School.find(user.school_id)
+      cannot [:index, :show], :hackers, [:rating, :github, :contact_date,
+                                         :team, :rating_avg, :github,
+                                         :tshirt_size, :why, :resume]
     end
   end
 end

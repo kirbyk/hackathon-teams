@@ -1,17 +1,17 @@
 <div class="navbar navbar-default" role="navigation">
   <div class="container">
     <ul class="nav navbar-nav navbar-right">
-      <li><%= current_user.try(:email) %></li>
-      <% if can? :read, Stat %>
+      <%# <li><%= current_user.try(:email) %1></li> %>
+      <% if can? :index, :stats %>
         <li><%= link_to 'Stats', stats_path %></li>
       <% end %>
-      <% if can? :read, Hacker %>
+      <% if can? :index, :hackers %>
         <li><%= link_to 'Hackers', hackers_path %></li>
       <% end %>
-      <% if can? :read, Team %>
+      <% if can? :index, :teams %>
         <li><%= link_to 'Teams', teams_path %></li>
       <% end %>
-      <% if can? :read, School %>
+      <% if can? :index, :schools %>
         <li><%= link_to 'Schools', schools_path %></li>
       <% end %>
       <% if user_signed_in? %>
