@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:ryanb/cancan.git
+  remote: git://github.com/ryanb/cancan.git
   revision: e6bf4c8d12dca316eb4f0923ca30b6d3dfedb7ae
   branch: 2.0
   specs:
