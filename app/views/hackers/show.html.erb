@@ -31,7 +31,7 @@
 
     <% if can? :show, :hackers, :team %>
       <li class="list-group-item">
-        <strong>Team:</strong>
+        <strong><%= link_to 'Team:', @hacker.team %></strong>
         <%= @hacker.team.members %>
       </li>
     <% end %>
