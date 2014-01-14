@@ -17,7 +17,7 @@ gem "paperclip", "~> 3.0"
 gem "aws-sdk", "~> 1.31.3"
 gem 'newrelic_rpm'
 # gem "cancan", "2.0"
-gem 'cancan', :git => 'git@github.com:ryanb/cancan.git', :branch => '2.0'
+gem 'cancan', :git => 'git://github.com/ryanb/cancan.git', :branch => '2.0'
 
 group :doc do
   gem 'sdoc', require: false
