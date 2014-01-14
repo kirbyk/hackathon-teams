@@ -18,7 +18,7 @@
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>
         <td><%= hacker.school.name if hacker.school %></td>
-        <td><%= hacker.github %></td>
+        <td><%= link_to hacker.github, 'http://www.google.com' %></td>
       </tr>
     <% end %>
   </tbody>
