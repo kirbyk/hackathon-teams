@@ -15,7 +15,7 @@
   <tbody>
     <% @team.hackers.each do |hacker| %>
       <tr>
-        <td><%= hacker.fname %></td>
+        <td><%= link_to hacker.fname, hacker %></td>
         <td><%= hacker.lname %></td>
         <td><%= hacker.school.name if hacker.school %></td>
         <td><%= link_to hacker.github, 'http://www.google.com' %></td>
