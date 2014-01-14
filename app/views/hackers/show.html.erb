@@ -47,7 +47,7 @@
 
     <li class="list-group-item">
       <strong>Email:</strong>
-      <%= @hacker.email %>
+      <%= mail_to @hacker.email %>
     </li>
 
     <% if can? :show, :hackers, :github %>
