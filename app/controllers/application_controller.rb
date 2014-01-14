@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  rescue_from CanCan::AccessDenied do |exception|
-    flash[:notice] = "Access denied."
-    redirect_to root_url
-  end
+  enable_authorization do |exception|
+    redirect_to root_url, :notice => exception.message
+  end unless :devise_controller?
 end
