@@ -14,6 +14,7 @@ class Ability
       can [:index, :show], :hackers, :status => Status.where("name = 'Committed'").first
       can [:index, :show], :schools
     elsif user.role? :representative
+      cannot :access, [:teams, :stats, :schools]
       can [:index, :show], :hackers,
                            :status_id => Status.where("name = 'Committed'
                                                       OR name = 'Accepted'

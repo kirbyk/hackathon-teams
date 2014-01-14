@@ -1,10 +1,10 @@
 class TeamsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  # load_and_authorize_resource
-  # enable_authorization do |exception|
-  #     redirect_to root_url, :notice => exception.message
-  # end
+  load_and_authorize_resource
+  enable_authorization do |exception|
+      redirect_to hackers_path, :notice => exception.message
+  end
 
   # GET /teams
   # GET /teams.json

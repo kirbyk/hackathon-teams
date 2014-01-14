@@ -1,6 +1,9 @@
 class StatsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
+  enable_authorization do |exception|
+      redirect_to hackers_path, :alert => exception.message
+  end
 
   def index
     

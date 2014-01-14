@@ -2,6 +2,9 @@ class SchoolsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_school, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+  enable_authorization do |exception|
+      redirect_to hackers_path, :notice => exception.message
+  end
 
   # GET /schools
   # GET /schools.json
