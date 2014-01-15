@@ -15,7 +15,6 @@ gem "will_paginate", "~> 3.0.5"
 gem "will_paginate-bootstrap", "~> 1.0.0"
 gem "paperclip", "~> 3.0"
 gem "aws-sdk", "~> 1.31.3"
-gem 'newrelic_rpm'
 gem 'cancan', :github => 'ryanb/cancan', :branch => '2.0'
 
 group :doc do
@@ -33,4 +32,5 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
