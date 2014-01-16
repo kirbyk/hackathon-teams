@@ -13,15 +13,15 @@
 >>>>>>> d0364e3f1fef46ae8e9b23223d18b89f208a7324
   <thead>
     <tr>
-      <th><%= sortable "status" %></th>
+      <th><%= sortable "status_id" %></th>
       <% if can? :index, :hackers, :rating %>
         <th><%= sortable "rating" %></th>
       <% else %>
         <th><%= sortable "email" %></th>
       <% end %>
-      <th><%= sortable "First Name" %></th>
-      <th><%= sortable "Last Name" %></th>
-      <th><%= sortable "School" %></th>
+      <th><%= sortable "fname", "First Name" %></th>
+      <th><%= sortable "lname", "Last Name" %></th>
+      <th><%= sortable "school_id" %></th>
       <% if can? :index, :hackers, :github %>
         <th><%= sortable "github" %></th>
       <% else %>
