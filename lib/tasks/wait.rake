@@ -5,9 +5,6 @@ task :wait => :environment do
   accepted = Status.find_by_name('Accepted').id
   emails.each do |email|
     hacker = Hacker.find_by_email(email)
-    hacker.status_id = accepted
-    hacker.contact_date = "01/15/2014"
-    hacker.save
-    puts email
+    puts email + "\t" + hacker.fname
   end
 end
