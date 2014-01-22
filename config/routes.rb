@@ -1,4 +1,6 @@
 HackathonTeams::Application.routes.draw do
+  resources :sponsors
+
   devise_for :users
   resources :teams
 

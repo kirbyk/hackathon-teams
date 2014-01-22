@@ -5,6 +5,7 @@ class SchoolsController < ApplicationController
   enable_authorization do |exception|
       redirect_to hackers_path, :notice => exception.message
   end
+  helper_method :sort_column, :sort_direction
 
   # GET /schools
   # GET /schools.json
@@ -75,5 +76,13 @@ class SchoolsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
       params.require(:school).permit(:name)
+    end
+
+    def sort_column
+      School.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
