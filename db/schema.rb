@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122203439) do
+ActiveRecord::Schema.define(version: 20140122205120) do
 
   create_table "hackers", force: true do |t|
     t.string   "fname"
@@ -56,7 +56,10 @@ ActiveRecord::Schema.define(version: 20140122203439) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sponsor_id"
   end
+
+  add_index "representatives", ["sponsor_id"], name: "index_representatives_on_sponsor_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
