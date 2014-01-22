@@ -8,8 +8,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Fname</th>
-      <th>Lname</th>
+      <th>First Name</th>
+      <th>Last Name</th>
       <th>Title</th>
       <th>Email</th>
       <th>Sponsor</th>
@@ -23,7 +23,7 @@
         <td><%= representative.lname %></td>
         <td><%= representative.title %></td>
         <td><%= representative.email %></td>
-        <td><%= representative.sponsor %></td>
+        <td><%= representative.sponsor.company_name %></td>
       </tr>
     <% end %>
   </tbody>
