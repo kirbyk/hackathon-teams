@@ -11,7 +11,7 @@
 		</li>
 
 		<li class="list-group-item">
-		  <strong>Lname:</strong>
+		  <strong>Last Name:</strong>
 		  <%= @representative.lname %>
 		</li>
 
@@ -23,6 +23,11 @@
 		<li class="list-group-item">
 		  <strong>Email:</strong>
 		  <%= @representative.email %>
+		</li>
+
+		<li class="list-group-item">
+			<strong>Sponsor:</strong>
+			<%= link_to @representative.sponsor.company_name, sponsor_path(@representative.sponsor) %>
 		</li>
 	</ul>
 </div>
