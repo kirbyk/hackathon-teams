@@ -26,7 +26,8 @@
 		</li>
 
 		<li class="list-group-item">
-			
+			<strong>Representatives:</strong>
+				<%= @sponsor.representatives.map{|representative| link_to representative.fname, representative}.join(', ').html_safe %>
 		</li>
 	</ul>
 </div>
