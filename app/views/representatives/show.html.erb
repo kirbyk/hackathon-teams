@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @representative.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @representative.lname %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @representative.title %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @representative.email %>
+</p>
+
+<%= link_to 'Edit', edit_representative_path(@representative) %> |
+<%= link_to 'Back', representatives_path %>
