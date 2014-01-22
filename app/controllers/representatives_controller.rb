@@ -1,5 +1,6 @@
 class RepresentativesController < ApplicationController
   before_action :set_representative, only: [:show, :edit, :update, :destroy]
+  before_action :set_sponsors
 
   # GET /representatives
   # GET /representatives.json
@@ -62,6 +63,11 @@ class RepresentativesController < ApplicationController
   end
 
   private
+    # Set sponsors to be used for actions
+    def set_sponsors
+      @sponsors = Sponsor.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_representative
       @representative = Representative.find(params[:id])

@@ -11,23 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :fname %><br>
-    <%= f.text_field :fname %>
-  </div>
-  <div class="field">
-    <%= f.label :lname %><br>
-    <%= f.text_field :lname %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= f.label 'Sponsor' %><br>
+              <%= f.collection_select :sponsor_id, @sponsors, :id, :company_name, {:include_blank => "Sponsor"}, {class: 'form-control'} %>  
+            </div>
+            <div class="form-group">
+              <%= f.label :fname %><br>
+              <%= f.text_field :fname %>
+            </div>
+            <div class="form-group">
+              <%= f.label :lname %><br>
+              <%= f.text_field :lname %>
+            </div>
+            <div class="form-group">
+              <%= f.label :title %><br>
+              <%= f.text_field :title %>
+            </div>
+            <div class="form-group">
+              <%= f.label :email %><br>
+              <%= f.text_field :email %>
+            </div>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
