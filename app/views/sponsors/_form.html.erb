@@ -11,23 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :company_name %><br>
-    <%= f.text_field :company_name %>
-  </div>
-  <div class="field">
-    <%= f.label :tier %><br>
-    <%= f.text_field :tier %>
-  </div>
-  <div class="field">
-    <%= f.label :money_given %><br>
-    <%= f.number_field :money_given %>
-  </div>
-  <div class="field">
-    <%= f.label :has_paid %><br>
-    <%= f.check_box :has_paid %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= f.label :company_name %><br>
+              <%= f.text_field :company_name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :tier %><br>
+              <%= f.text_field :tier, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :money_given %><br>
+              <%= f.number_field :money_given, class: 'form-control' %>
+            </div>
+            <div class="checkbox">
+              <%= f.label :has_paid %>
+              <%= f.check_box :has_paid %>
+            </div>
+            <div class="actions">
+              <%= f.submit class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

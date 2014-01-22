@@ -22,7 +22,11 @@
         <td><%= sponsor.company_name %></td>
         <td><%= sponsor.tier %></td>
         <td><%= sponsor.money_given %></td>
-        <td><%= sponsor.has_paid %></td>
+        <td>
+          <% if sponsor.has_paid %>
+            <%= 'Yes' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
