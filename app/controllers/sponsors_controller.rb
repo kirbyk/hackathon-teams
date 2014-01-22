@@ -10,6 +10,7 @@ class SponsorsController < ApplicationController
   # GET /sponsors/1
   # GET /sponsors/1.json
   def show
+    @company_sponsors = @sponsor.representatives.map{|representative| view_context.link_to representative.fname, representative}.join(', ').html_safe
   end
 
   # GET /sponsors/new
