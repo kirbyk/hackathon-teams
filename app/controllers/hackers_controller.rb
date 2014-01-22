@@ -14,6 +14,7 @@ class HackersController < ApplicationController
   # GET /hackers/1
   # GET /hackers/1.json
   def show
+    @teammates = @hacker.team.members.split(', ').map{|teammate| view_context.link_to teammate, Hacker.find_by_fname_and_lname(teammate.split(' ')[0], teammate.split(' ')[1])}.join(', ').html_safe
   end
 
   def commit
