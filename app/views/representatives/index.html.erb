@@ -1,4 +1,9 @@
-<h1>Representatives</h1>
+<h1>
+  Representatives
+  <%= link_to new_representative_path, class: 'btn btn-primary' do %>
+    New Representative
+  <% end %>
+</h1>
 
 <table class="table table-striped">
   <thead>
@@ -7,27 +12,19 @@
       <th>Lname</th>
       <th>Title</th>
       <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @representatives.each do |representative| %>
-      <tr>
+      <tr class="clickable pointer" href="<%= representative_path(representative) %>">
         <td><%= representative.fname %></td>
         <td><%= representative.lname %></td>
         <td><%= representative.title %></td>
         <td><%= representative.email %></td>
-        <td><%= link_to 'Show', representative %></td>
-        <td><%= link_to 'Edit', edit_representative_path(representative) %></td>
-        <td><%= link_to 'Destroy', representative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Representative', new_representative_path %>
