@@ -6,7 +6,7 @@ HackathonTeams::Application.routes.draw do
   
   resources :hackers
 
-  root 'hackers#commit'
+  root 'pages#root'
 
   get 'committed' => 'hackers#committed'
 

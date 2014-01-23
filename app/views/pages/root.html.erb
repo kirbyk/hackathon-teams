@@ -1,0 +1,5 @@
+<% unless user_signed_in? %>
+  <%= render 'hackers/commit' %>
+<% else %>
+  <%= render 'welcome' %>
+<% end %>
