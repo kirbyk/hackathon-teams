@@ -1,4 +1,5 @@
 class HackersController < ApplicationController
+  before_filter :cancan_hack
   before_filter :prepare_schools, :prepare_teams, :prepare_statuses, :prepare_tshirts
   before_action :authenticate_user!, :except => [:commit, :committed, :update, :update_commit]
   before_action :set_hacker, only: [:show, :edit, :update, :destroy, :update_commit]
@@ -60,6 +61,7 @@ class HackersController < ApplicationController
   # POST /hackers.json
   def create
     @hacker = Hacker.new(hacker_params)
+    authorize! :create, @hacker
 
     respond_to do |format|
       if @hacker.save
@@ -97,6 +99,13 @@ class HackersController < ApplicationController
   end
 
   private
+    def cancan_hack
+      return if request.get?
+      resource = controller_name.singularize.to_sym
+      method = "#{resource}_params"
+      params[resource] &&= send(method) if respond_to?(method, true)
+    end
+
     def prepare_schools
       @schools = School.all
     end
