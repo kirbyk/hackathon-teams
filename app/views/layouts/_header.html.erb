@@ -13,6 +13,12 @@
       <% end %>
       <% if can? :index, :schools %>
         <li><%= link_to 'Schools', schools_path %></li>
+      <% end %>      
+      <% if can? :index, :representatives %>
+        <li><%= link_to 'Representatives', representatives_path %></li>
+      <% end %>      
+      <% if can? :index, :sponsors %>
+        <li><%= link_to 'Sponsors', sponsors_path %></li>
       <% end %>
       <% if user_signed_in? %>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>

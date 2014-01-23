@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  tier: MyString
+  money_given: 1
+  has_paid: false
+
+two:
+  company_name: MyString
+  tier: MyString
+  money_given: 1
+  has_paid: false

@@ -30,9 +30,7 @@
     <% if can? :show, :hackers, :team %>
       <li class="list-group-item">
         <strong><%= link_to 'Team:', @hacker.team %></strong>
-        <% for teammate in @hacker.team.members.split(', ') do %>
-          <%= link_to teammate + ', ', Hacker.find_by_fname_and_lname(teammate.split(' ')[0], teammate.split(' ')[1]) %>
-        <% end %>
+        <%= @teammates %>
       </li>
     <% end %>
 

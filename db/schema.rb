@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113022855) do
+ActiveRecord::Schema.define(version: 20140122205120) do
 
   create_table "hackers", force: true do |t|
     t.string   "fname"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20140113022855) do
 
   add_index "ratings", ["hacker_id"], name: "index_ratings_on_hacker_id"
 
+  create_table "representatives", force: true do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "title"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "sponsor_id"
+  end
+
+  add_index "representatives", ["sponsor_id"], name: "index_representatives_on_sponsor_id"
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -65,6 +77,15 @@ ActiveRecord::Schema.define(version: 20140113022855) do
 
   create_table "schools", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sponsors", force: true do |t|
+    t.string   "company_name"
+    t.string   "tier"
+    t.integer  "money_given"
+    t.boolean  "has_paid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

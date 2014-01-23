@@ -1,0 +1,47 @@
+<%= form_for(@representative) do |f| %>
+  <% if @representative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@representative.errors.count, "error") %> prohibited this representative from being saved:</h2>
+
+      <ul>
+      <% @representative.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= f.label 'Sponsor' %><br>
+              <%= f.collection_select :sponsor_id, @sponsors, :id, :company_name, {:include_blank => "Sponsor"}, {class: 'form-control'} %>  
+            </div>
+            <div class="form-group">
+              <%= f.label 'First Name' %><br>
+              <%= f.text_field :fname, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label 'Last Name' %><br>
+              <%= f.text_field :lname, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :title %><br>
+              <%= f.text_field :title, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :email %><br>
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
+            <div class="actions">
+              <%= f.submit class: 'btn btn-primary'%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

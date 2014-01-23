@@ -1,0 +1,33 @@
+<h1>
+  Sponsors
+
+  <%= link_to new_sponsor_path, class: 'btn btn-primary' do %>
+    New Sponsor
+  <% end %>
+</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Company name</th>
+      <th>Tier</th>
+      <th>Money given</th>
+      <th>Has paid?</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sponsors.each do |sponsor| %>
+      <tr class="clickable pointer" href="<%= sponsor_path(sponsor) %>">
+        <td><%= sponsor.company_name %></td>
+        <td><%= sponsor.tier %></td>
+        <td><%= sponsor.money_given %></td>
+        <td>
+          <% if sponsor.has_paid %>
+            <%= 'Yes' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
