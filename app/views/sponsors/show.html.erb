@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<h1><%= @sponsor.company_name %></h1>
+  </div>
+  <ul class="list-group">
+		<li class="list-group-item">
+		  <strong>Company name:</strong>
+		  <%= @sponsor.company_name %>
+		</li>
+
+		<li class="list-group-item">
+		  <strong>Tier:</strong>
+		  <%= @sponsor.tier %>
+		</li>
+
+		<li class="list-group-item">
+		  <strong>Money given:</strong>
+		  <%= @sponsor.money_given %>
+		</li>
+
+		<li class="list-group-item">
+		  <strong>Has paid:</strong>
+		  <%= @sponsor.has_paid %>
+		</li>
+
+		<li class="list-group-item">
+			<strong>Representatives:</strong>
+				<%= @company_sponsors %>
+		</li>
+	</ul>
+</div>
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
+<%= link_to 'Back', sponsors_path %>

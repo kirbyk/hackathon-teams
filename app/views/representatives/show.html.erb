@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1><%= @representative.fname + ' ' + @representative.lname %></h1>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">
+		  <strong>First Name:</strong>
+		  <%= @representative.fname %>
+		</li>
+
+		<li class="list-group-item">
+		  <strong>Last Name:</strong>
+		  <%= @representative.lname %>
+		</li>
+
+		<li class="list-group-item">
+		  <strong>Title:</strong>
+		  <%= @representative.title %>
+		</li>
+
+		<li class="list-group-item">
+		  <strong>Email:</strong>
+		  <%= @representative.email %>
+		</li>
+
+		<li class="list-group-item">
+			<strong>Sponsor:</strong>
+			<%= link_to @representative.sponsor.company_name, sponsor_path(@representative.sponsor) %>
+		</li>
+	</ul>
+</div>
+
+<%= link_to 'Edit', edit_representative_path(@representative) %> |
+<%= link_to 'Back', representatives_path %>
