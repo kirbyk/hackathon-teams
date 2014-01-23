@@ -119,7 +119,7 @@ class HackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hacker_params
-      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :contact_date, :status, :status_id, :email, :github, :tshirt_size, :why, :resume, :cell)
+      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :contact_date, :status, :status_id, :email, :github, :tshirt_size, :why, :resume, :cell, :rating)
     end
 
     def sort_column
