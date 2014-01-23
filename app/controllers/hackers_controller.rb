@@ -63,6 +63,12 @@ class HackersController < ApplicationController
     @hacker = Hacker.new(hacker_params)
     authorize! :create, @hacker
 
+    unless params[:team_id]
+      team = Team.create
+    end
+
+    @hacker.team_id = team.id
+
     respond_to do |format|
       if @hacker.save
         format.html { redirect_to @hacker, notice: 'Hacker was successfully created.' }
