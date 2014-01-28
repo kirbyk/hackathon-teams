@@ -4,6 +4,17 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
     link_to title, :sort => column, :direction => direction
   end
+  
+  def sortable_count(column, title = nil)
+    title ||= column.titleize
+    direction = column == "count" && sort_direction == 'asc' ? 'desc' : 'asc'
+    link_to title, :sort => column, :direction => direction
+  end
+  
+  # def sortable_count(title)
+  #   direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
+  #   link_to title, :sort => column, :direction => direction
+  # end
 
   def school_link(name)
     school = School.find_by_name(name)

@@ -9,7 +9,9 @@
 <table class="table table-striped hacker-table">
   <thead>
     <tr>
-      <th><%= sortable "status_id" %></th>
+      <% if can? :index, :hackers, :status %>
+        <th><%= sortable "status_id" %></th>
+      <% end %>
       <% if can? :index, :hackers, :rating %>
         <th><%= sortable "rating" %></th>
       <% else %>
@@ -29,7 +31,9 @@
   <tbody>
     <% @hackers.each do |hacker| %>
       <tr class="clickable pointer" href="<%= hacker_path(hacker) %>">
-        <td><%= hacker.status.name if hacker.status %></td>
+        <% if can? :index, :hackers, :status %>
+          <td><%= hacker.status.name if hacker.status %></td>
+        <% end %>
         <% if can? :index, :hackers, :rating %>
           <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
         <% else %>
