@@ -49,7 +49,7 @@
     <% if can? :show, :hackers, :github %>
       <li class="list-group-item">
         <strong>Github:</strong>
-        <%= link_to @hacker.github, 'http://www.github.com/' + @hacker.github %>
+        <%= link_to @hacker.github, 'http://www.github.com/' + @hacker.github if @hacker.github %>
       </li>
     <% end %>
 
