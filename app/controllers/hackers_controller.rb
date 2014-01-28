@@ -27,7 +27,7 @@ class HackersController < ApplicationController
     respond_to do |format|
       if @hacker.nil? || (@hacker.status.name != 'Accepted' && @hacker.status.name != 'Committed')
         flash[:notice] = "You entered an invalid email."
-        format.html { redirect_to action: 'commit' }
+        format.html { redirect_to controller: 'pages', action: 'root' }
       else
         format.html { render action: 'committed', email: @hacker.email }
       end
