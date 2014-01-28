@@ -3,10 +3,12 @@
     <h1><%= @hacker.fname + ' ' + @hacker.lname %></h1>
   </div>
   <ul class="list-group">
-    <li class="list-group-item">
-      <strong>Status:</strong>
-      <%= @hacker.status.name if @hacker.status %>
-    </li>
+    <% if can? :show, :hackers, :status %>
+      <li class="list-group-item">
+        <strong>Status:</strong>
+        <%= @hacker.status.name if @hacker.status %>
+      </li>
+    <% end %>
 
     <% if can? :show, :hackers, :contact_date %>
       <li class="list-group-item">
@@ -49,7 +51,11 @@
     <% if can? :show, :hackers, :github %>
       <li class="list-group-item">
         <strong>Github:</strong>
-        <%= link_to @hacker.github, 'http://www.github.com/' + @hacker.github if @hacker.github %>
+        <% unless @hacker.github %>
+          <%= link_to @hacker.github, 'http://www.github.com/' + @hacker.github %>
+        <% else %>
+          This hacker doesn't have a github :(
+        <% end %>
       </li>
     <% end %>
 
@@ -78,7 +84,7 @@
       <li class="list-group-item">
         <strong>Resume:</strong>
         <% if @hacker.resume.url != '/resumes/original/missing.png' %>
-          <%= link_to 'Resume', @hacker.resume.url %>
+          <%= link_to @hacker.resume_file_name, @hacker.resume.url %>
         <% else %>
           This hacker does not have a resume.
         <% end %>

@@ -5,8 +5,14 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Status</th>
-      <th>Rating</th>
+      <% if can? :index, :hackers, :status %>
+        <th>Status</th>
+      <% end %>
+      <% if can? :index, :hackers, :rating %>
+        <th>Rating</th>
+      <% else %>
+        <th>Email</th>
+      <% end %>
       <th>Fname</th>
       <th>Lname</th>
       <th>Github</th>
@@ -14,13 +20,19 @@
   </thead>
 
   <tbody>
-    <% @school.hackers.each do |hacker| %>
+    <% @school.hackers.accessible_by(current_ability).each do |hacker| %>
       <tr class="clickable" href="<%= hacker_path(hacker) %>">
-        <td><%= hacker.status.name if hacker.status %></td>
-        <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
+        <% if can? :index, :hackers, :status %>
+          <td><%= hacker.status.name if hacker.status %></td>
+        <% end %>
+        <% if can? :index, :hackers, :rating %>
+          <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
+        <% else %>
+          <td><%= hacker.email %></td>
+        <% end %>
         <td><%= hacker.fname %></td>
         <td><%= hacker.lname %></td>
-        <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
+        <td><%= link_to hacker.github, "http://github.com/#{hacker.github}" if hacker.github %></td>
       </tr>
     <% end %>
   </tbody>

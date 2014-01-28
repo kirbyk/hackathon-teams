@@ -13,6 +13,9 @@ class Ability
     elsif user.role? :sponsor
       can [:index, :show], :hackers, :status => Status.where("name = 'Committed'").first
       can [:index, :show], :schools
+      cannot [:index, :show], :hackers, [:status, :rating, :contact_date,
+                                         :team, :rating_avg, :cell,
+                                         :tshirt_size, :why]
     elsif user.role? :representative
       cannot :access, [:teams, :stats, :schools]
       can [:index, :show], :hackers,
@@ -21,8 +24,8 @@ class Ability
                                                       OR name = 'Waitlisted'").map {|s| s.id},
                            :school => School.find(user.school_id)
       cannot [:index, :show], :hackers, [:rating, :github, :contact_date,
-                                         :team, :rating_avg, :github,
-                                         :tshirt_size, :why, :resume]
+                                         :team, :rating_avg, :tshirt_size, 
+                                         :why, :resume]
     end
   end
 end
