@@ -10,10 +10,14 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    unless params[:sort] == 'count'
-      @schools = School.accessible_by(current_ability).order(sort_column + " " + sort_direction)
+    if params == 'count'
+      @schools = School.accessible_by(current_ability)
+                       .joins(:hackers)
+                       .group('schools.name')
+                       .order("count(hackers.id) #{sort_direction}")
     else
-      @schools = School.accessible_by(current_ability).joins(:hackers).group('schools.name').order("count(hackers.id) " + sort_direction)
+      @schools = School.accessible_by(current_ability)
+                       .order("#{sort_column} #{sort_direction}")
     end
   end
 
@@ -38,11 +42,14 @@ class SchoolsController < ApplicationController
 
     respond_to do |format|
       if @school.save
-        format.html { redirect_to @school, notice: 'School was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @school }
+        format.html { redirect_to @school,
+                      notice: 'School was successfully created.' }
+        format.json { render action: 'show',
+                      status: :created, location: @school }
       else
         format.html { render action: 'new' }
-        format.json { render json: @school.errors, status: :unprocessable_entity }
+        format.json { render json: @school.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -52,11 +59,13 @@ class SchoolsController < ApplicationController
   def update
     respond_to do |format|
       if @school.update(school_params)
-        format.html { redirect_to @school, notice: 'School was successfully updated.' }
+        format.html { redirect_to @school,
+                      notice: 'School was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @school.errors, status: :unprocessable_entity }
+        format.json { render json: @school.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -77,15 +86,16 @@ class SchoolsController < ApplicationController
       @school = School.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet
+    # only allow the white list through.
     def school_params
       params.require(:school).permit(:name)
     end
 
     def sort_column
-      School.column_names.include?(params[:sort]) ? params[:sort] : "id"
+      School.column_names.include?( params[:sort] ) ? params[:sort] : "id"
     end
-  
+
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
