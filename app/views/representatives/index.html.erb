@@ -23,7 +23,7 @@
         <td><%= representative.lname %></td>
         <td><%= representative.title %></td>
         <td><%= representative.email %></td>
-        <td><%= representative.sponsor.company_name %></td>
+        <td><%= representative.sponsor.company_name if representative.sponsor %></td>
       </tr>
     <% end %>
   </tbody>
