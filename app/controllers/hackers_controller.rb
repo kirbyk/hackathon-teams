@@ -1,21 +1,33 @@
 class HackersController < ApplicationController
   before_filter :cancan_hack
-  before_filter :prepare_schools, :prepare_teams, :prepare_statuses, :prepare_tshirts
-  before_action :authenticate_user!, :except => [:commit, :committed, :update, :update_commit]
-  before_action :set_hacker, only: [:show, :edit, :update, :destroy, :update_commit]
+  before_filter :prepare_schools, :prepare_teams,
+                :prepare_statuses, :prepare_tshirts
+  before_action :authenticate_user!,
+                :except => [:commit, :committed, :update, :update_commit]
+  before_action :set_hacker,
+                only: [:show, :edit, :update, :destroy, :update_commit]
   helper_method :sort_column, :sort_direction
   load_and_authorize_resource
 
   # GET /hackers
   # GET /hackers.json
   def index
-    @hackers = Hacker.accessible_by(current_ability).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 200)
+    paginate_params = { :page => params[:page], :per_page => 200 }
+    order_by = sort_column + " " + sort_direction
+    @hackers = Hacker.accessible_by( current_ability )
+                     .order( order_by )
+                     .paginate( paginate_params )
   end
 
   # GET /hackers/1
   # GET /hackers/1.json
   def show
-    @teammates = @hacker.team.members.split(', ').map{|teammate| view_context.link_to teammate, Hacker.find_by_fname_and_lname(teammate.split(' ')[0], teammate.split(' ')[1])}.join(', ').html_safe
+    team_splits = @hacker.team.members.split(', ')
+    @teammates = team_splits.map do |teammate|
+      current_hacker = Hacker.find_by_fname_and_lname(teammate.split(' ')[0],
+                                                      teammate.split(' ')[1])
+      view_context.link_to( teammate, current_hacker )
+    end.join(', ').html_safe
   end
 
   def commit
@@ -25,7 +37,8 @@ class HackersController < ApplicationController
     @hacker = Hacker.find_by_email(params[:email].downcase)
 
     respond_to do |format|
-      if @hacker.nil? || (@hacker.status.name != 'Accepted' && @hacker.status.name != 'Committed')
+      if @hacker.nil? || (@hacker.status.name != 'Accepted' &&
+                          @hacker.status.name != 'Committed')
         flash[:notice] = "You entered an invalid email."
         format.html { redirect_to controller: 'pages', action: 'root' }
       else
@@ -71,11 +84,14 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.save
-        format.html { redirect_to @hacker, notice: 'Hacker was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @hacker }
+        format.html { redirect_to @hacker,
+                      notice: 'Hacker was successfully created.' }
+        format.json { render action: 'show',
+                      status: :created, location: @hacker }
       else
         format.html { render action: 'new' }
-        format.json { render json: @hacker.errors, status: :unprocessable_entity }
+        format.json { render json: @hacker.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -85,11 +101,13 @@ class HackersController < ApplicationController
   def update
     respond_to do |format|
       if @hacker.update(hacker_params)
-        format.html { redirect_to @hacker, notice: 'Hacker was successfully updated.' }
+        format.html { redirect_to @hacker,
+                      notice: 'Hacker was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @hacker.errors, status: :unprocessable_entity }
+        format.json { render json: @hacker.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -134,7 +152,10 @@ class HackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hacker_params
-      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :contact_date, :status, :status_id, :email, :github, :tshirt_size, :why, :resume, :cell, :rating)
+      params.require(:hacker).permit(:fname, :lname, :school, :school_id,
+                                     :team, :team_id, :contact_date, :status,
+                                     :status_id, :email, :github, :tshirt_size,
+                                     :why, :resume, :cell, :rating)
     end
 
     def sort_column
