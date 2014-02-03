@@ -6,20 +6,20 @@ class StatsController < ApplicationController
   end
 
   def index
-    
+
     @schools = ['Purdue University','UIUC','University of Wisconsin - Madison',
                 'Rutgers University','Carnegie Mellon University',
                 'Ohio State University','University of Maryland',
                 'University of Waterloo','University of Michigan',
                 'Rose-Hulman Institute of Technology','Northwestern University',
-                'University of Iowa']    
-    
+                'University of Iowa']
+
     @applied = Hash.new
-    @accepted = Hash.new;
-    @waitlisted = Hash.new;
-    @rejected = Hash.new;
-    @committed = Hash.new;
-    @declined = Hash.new;
+    @accepted = Hash.new
+    @waitlisted = Hash.new
+    @rejected = Hash.new
+    @committed = Hash.new
+    @declined = Hash.new
 
     accepted_id = Status.find_by_name('Accepted').id
     waitlisted_id = Status.find_by_name('Waitlisted').id

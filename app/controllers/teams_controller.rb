@@ -9,7 +9,8 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.order(params[:sort]).paginate(:page => params[:page], :per_page => 150)
+    paginate_params = { :page => params[:page], :per_page => 150 }
+    @teams = Team.order(params[:sort]).paginate( paginate_params )
   end
 
   # GET /teams/1
@@ -33,11 +34,14 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @team }
+        format.html { redirect_to @team,
+                      notice: 'Team was successfully created.' }
+        format.json { render action: 'show',
+                      status: :created, location: @team }
       else
         format.html { render action: 'new' }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        format.json { render json: @team.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -47,11 +51,13 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to @team,
+                      notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        format.json { render json: @team.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -72,7 +78,8 @@ class TeamsController < ApplicationController
       @team = Team.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet
+    # only allow the white list through.
     def team_params
       params[:team]
     end

@@ -29,11 +29,14 @@ class RepresentativesController < ApplicationController
 
     respond_to do |format|
       if @representative.save
-        format.html { redirect_to @representative, notice: 'Representative was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @representative }
+        format.html { redirect_to @representative,
+                      notice: 'Representative was successfully created.' }
+        format.json { render action: 'show',
+                      status: :created, location: @representative }
       else
         format.html { render action: 'new' }
-        format.json { render json: @representative.errors, status: :unprocessable_entity }
+        format.json { render json: @representative.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +46,13 @@ class RepresentativesController < ApplicationController
   def update
     respond_to do |format|
       if @representative.update(representative_params)
-        format.html { redirect_to @representative, notice: 'Representative was successfully updated.' }
+        format.html { redirect_to @representative,
+                      notice: 'Representative was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @representative.errors, status: :unprocessable_entity }
+        format.json { render json: @representative.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -73,8 +78,10 @@ class RepresentativesController < ApplicationController
       @representative = Representative.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet
+    # only allow the white list through.
     def representative_params
-      params.require(:representative).permit(:fname, :lname, :title, :email, :sponsor, :sponsor_id, :cell)
+      params.require(:representative).permit(:fname, :lname, :title, :email,
+                                             :sponsor, :sponsor_id, :cell)
     end
 end

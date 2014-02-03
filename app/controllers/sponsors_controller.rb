@@ -10,7 +10,9 @@ class SponsorsController < ApplicationController
   # GET /sponsors/1
   # GET /sponsors/1.json
   def show
-    @company_sponsors = @sponsor.representatives.map{|representative| view_context.link_to representative.fname, representative}.join(', ').html_safe
+    @company_sponsors = @sponsor.representatives.map do |representative|
+      view_context.link_to( representative.fname, representative )
+    end.join(', ').html_safe
   end
 
   # GET /sponsors/new
@@ -29,11 +31,14 @@ class SponsorsController < ApplicationController
 
     respond_to do |format|
       if @sponsor.save
-        format.html { redirect_to @sponsor, notice: 'Sponsor was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @sponsor }
+        format.html { redirect_to @sponsor,
+                      notice: 'Sponsor was successfully created.' }
+        format.json { render action: 'show',
+                      status: :created, location: @sponsor }
       else
         format.html { render action: 'new' }
-        format.json { render json: @sponsor.errors, status: :unprocessable_entity }
+        format.json { render json: @sponsor.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +48,13 @@ class SponsorsController < ApplicationController
   def update
     respond_to do |format|
       if @sponsor.update(sponsor_params)
-        format.html { redirect_to @sponsor, notice: 'Sponsor was successfully updated.' }
+        format.html { redirect_to @sponsor,
+                      notice: 'Sponsor was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @sponsor.errors, status: :unprocessable_entity }
+        format.json { render json: @sponsor.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -68,8 +75,10 @@ class SponsorsController < ApplicationController
       @sponsor = Sponsor.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet
+    # only allow the white list through.
     def sponsor_params
-      params.require(:sponsor).permit(:company_name, :tier, :money_given, :has_paid)
+      params.require(:sponsor).permit(:company_name, :tier,
+                                      :money_given, :has_paid)
     end
 end
