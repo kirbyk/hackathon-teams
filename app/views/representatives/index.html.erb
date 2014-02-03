@@ -10,9 +10,9 @@
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Title</th>
       <th>Email</th>
-      <th>Sponsor</th>
+      <th>Company</th>
+      <th>Cell</th>
     </tr>
   </thead>
 
@@ -21,9 +21,9 @@
       <tr class="clickable pointer" href="<%= representative_path(representative) %>">
         <td><%= representative.fname %></td>
         <td><%= representative.lname %></td>
-        <td><%= representative.title %></td>
         <td><%= representative.email %></td>
         <td><%= representative.sponsor.company_name if representative.sponsor %></td>
+        <td><%= representative.cell %></td>
       </tr>
     <% end %>
   </tbody>
