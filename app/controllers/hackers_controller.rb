@@ -22,7 +22,7 @@ class HackersController < ApplicationController
   end
 
   def committed
-    @hacker = Hacker.find_by_email(params[:email])
+    @hacker = Hacker.find_by_email(params[:email].downcase)
 
     respond_to do |format|
       if @hacker.nil? || (@hacker.status.name != 'Accepted' && @hacker.status.name != 'Committed')
