@@ -51,7 +51,7 @@
     <% if can? :show, :hackers, :github %>
       <li class="list-group-item">
         <strong>Github:</strong>
-        <% unless @hacker.github %>
+        <% if @hacker.github %>
           <%= link_to @hacker.github, 'http://www.github.com/' + @hacker.github %>
         <% else %>
           This hacker doesn't have a github :(
