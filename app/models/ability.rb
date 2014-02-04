@@ -12,7 +12,7 @@ class Ability
       can [:index, :show], :all
     elsif user.role? :sponsor
       can [:index, :show], :hackers, :status => Status.where("name = 'Committed'").first
-      can [:index, :show], :schools
+      can [:index, :show], :schools, :hackers => {:status => Status.where("name = 'Committed'").first}
       cannot [:index, :show], :hackers, [:status, :rating, :contact_date,
                                          :team, :rating_avg, :cell,
                                          :tshirt_size, :why]
