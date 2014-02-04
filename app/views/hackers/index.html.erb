@@ -47,7 +47,7 @@
         <td><%= hacker.lname.capitalize %></td>
         <td><%= hacker.school.name if hacker.school %></td>
         <% if can? :index, :hackers, :github %>
-          <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
+          <td><%= link_to hacker.github.downcase, "http://github.com/#{hacker.github}"%></td>
         <% else %>
           <td><%= hacker.cell %></td>
         <% end %>
