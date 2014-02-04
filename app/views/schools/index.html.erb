@@ -14,10 +14,11 @@
   </thead>
 
   <tbody>
+    <% c = Status.where('name = ?','Committed').first.id %>
     <% @schools.each do |school| %>
       <tr class="clickable pointer" href="<%= school_path(school) %>">
         <td><%= school.name %></td>
-        <td><%= school.hackers.count %></td>
+        <td><%= school.hackers.where('status_id = ?', c).count %></td>
       </tr>
     <% end %>
   </tbody>
