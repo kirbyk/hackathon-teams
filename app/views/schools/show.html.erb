@@ -28,11 +28,11 @@
         <% if can? :index, :hackers, :rating %>
           <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
         <% else %>
-          <td><%= hacker.email %></td>
+          <td><%= hacker.email.downcase %></td>
         <% end %>
-        <td><%= hacker.fname %></td>
-        <td><%= hacker.lname %></td>
-        <td><%= link_to hacker.github, "http://github.com/#{hacker.github}" if hacker.github %></td>
+        <td><%= hacker.fname.capitalize %></td>
+        <td><%= hacker.lname.capitalize %></td>
+        <td><%= link_to hacker.github.downcase, "http://github.com/#{hacker.github}" if hacker.github %></td>
       </tr>
     <% end %>
   </tbody>
