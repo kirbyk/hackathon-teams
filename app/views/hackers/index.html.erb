@@ -37,13 +37,13 @@
         <% if can? :index, :hackers, :rating %>
           <td><%= '%.2f' % hacker.rating if hacker.rating %></td>
         <% else %>
-          <td><%= hacker.email %></td>
+          <td><%= hacker.email.downcase %></td>
         <% end %>
-        <td><%= hacker.fname %></td>
-        <td><%= hacker.lname %></td>
+        <td><%= hacker.fname.capitalize %></td>
+        <td><%= hacker.lname.capitalize %></td>
         <td><%= hacker.school.name if hacker.school %></td>
         <% if can? :index, :hackers, :github %>
-          <td><%= link_to hacker.github, "http://github.com/#{hacker.github}"%></td>
+          <td><%= link_to hacker.github.downcase, "http://github.com/#{hacker.github}"%></td>
         <% else %>
           <td><%= hacker.cell %></td>
         <% end %>
