@@ -25,12 +25,20 @@
               <%= f.text_field :tier, class: 'form-control' %>
             </div>
             <div class="form-group">
+              <%= f.label :tech_talk_time %><br>
+              <%= f.text_field :tech_talk_time, class: 'form-control' %>
+            </div>
+            <div class="form-group">
               <%= f.label :money_given %><br>
               <%= f.number_field :money_given, class: 'form-control' %>
             </div>
             <div class="checkbox">
               <%= f.label :has_paid %>
               <%= f.check_box :has_paid %>
+            </div>            
+            <div class="checkbox">
+              <%= f.label :mini_hack %>
+              <%= f.check_box :mini_hack %>
             </div>
             <div class="actions">
               <%= f.submit class: 'btn btn-primary' %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203174838) do
+ActiveRecord::Schema.define(version: 20140205022744) do
 
   create_table "hackers", force: true do |t|
     t.string   "fname"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 20140203174838) do
     t.boolean  "has_paid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tech_talk_time"
+    t.boolean  "mini_hack"
   end
 
   create_table "statuses", force: true do |t|

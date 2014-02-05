@@ -12,7 +12,9 @@
       <th>Company name</th>
       <th>Tier</th>
       <th>Money given</th>
+      <th>Tech talk time</th>
       <th>Has paid?</th>
+      <th>Mini hack?</th>
     </tr>
   </thead>
 
@@ -23,7 +25,17 @@
         <td><%= sponsor.tier %></td>
         <td><%= sponsor.money_given %></td>
         <td>
+          <% if sponsor.tech_talk_time %>
+            <%= sponsor.tech_talk_time %>
+          <% end %>
+        </td>
+        <td>
           <% if sponsor.has_paid %>
+            <%= 'Yes' %>
+          <% end %>
+        </td>
+        <td>
+          <% if sponsor.mini_hack %>
             <%= 'Yes' %>
           <% end %>
         </td>
