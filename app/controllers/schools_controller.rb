@@ -85,7 +85,7 @@ class SchoolsController < ApplicationController
     def sort_column
       School.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
-  
+
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end

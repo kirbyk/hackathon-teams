@@ -1,6 +1,6 @@
 class Ability
   include CanCan::Ability
- 
+
   def initialize(user)
     user ||= User.new # guest user
 
@@ -30,7 +30,7 @@ class Ability
                                                       OR name = 'Waitlisted'").map {|s| s.id},
                            :school => School.find(user.school_id)
       cannot [:index, :show], :hackers, [:rating, :github, :contact_date,
-                                         :team, :rating_avg, :tshirt_size, 
+                                         :team, :rating_avg, :tshirt_size,
                                          :why, :resume]
     end
   end

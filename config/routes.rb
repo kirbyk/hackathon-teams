@@ -8,7 +8,7 @@ HackathonTeams::Application.routes.draw do
   resources :teams
 
   resources :schools
-  
+
   resources :hackers
 
   root 'pages#root'
