@@ -7,19 +7,13 @@ $ ->
 
   # add date picker to _form's
   $('.dp-sel').datepicker()
-  
+
   # make index rows clickable to cooresponding show 
   $('.clickable').click ->
     href = $(this).attr('href')
     window.location = href if href
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
   $(".clickable").hover (->
     $(this).addClass("hover")
   ), ->
       $(this).removeClass("hover")
->>>>>>> d0364e3f1fef46ae8e9b23223d18b89f208a7324
-=======
->>>>>>> 00fc22e951ebdb1600f8abc044c66e86cf8fa09e
