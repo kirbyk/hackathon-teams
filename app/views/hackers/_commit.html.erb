@@ -6,7 +6,7 @@
           <%= form_tag({controller: "hackers", action: "committed"}, method: "get", class: "nifty_form") do %>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3>Congratulations, you've been accepted to BoilerMake!</h3>
+                <h3>Congratulations, you've been accepted to <%= t :hackathon_name %>!</h3>
               </div>
               <div class="panel-body">
                 <% if notice %>
@@ -30,7 +30,7 @@
         </section>
         <div class="index-carousel-overlay"></div>
         <div class="index-carousel-background">
-<%= image_tag("corec2.jpg") %>
+          <%= image_tag("corec2.jpg") %>
         </div>
       </div>
     </div>

@@ -1,5 +1,7 @@
 <h1>Welcome, BoilerMake <%= current_user.roles.first.name.capitalize %></h1>
 <div class="welcome-hero">
   <h3>Use this area to browse hackers.</h3>
-  <h3>If you have any questions, problems, or comments email <a href="mailto:kirby@purdue.edu">kirby@purdue.edu</a>.</h3>
+  <h3>If you have any questions, problems, or comments email
+      <a href='<%= t :director_email%>'><%= t :current_director%></a>.
+  </h3>
 </div>

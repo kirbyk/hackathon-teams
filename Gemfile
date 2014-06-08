@@ -16,6 +16,7 @@ gem 'will_paginate-bootstrap', '~> 1.0.0'
 gem 'paperclip', '~> 4.1.1'
 gem 'aws-sdk', '~> 1.42.0'
 gem 'cancan'
+gem 'rails-i18n', '~> 4.0.0'
 
 group :doc do
   gem 'sdoc', require: false
