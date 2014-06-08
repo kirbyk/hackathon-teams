@@ -9,7 +9,8 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.order(params[:sort]).paginate(:page => params[:page], :per_page => 150)
+    @teams = Team.order(params[:sort]).paginate :page => params[:page],
+                                                :per_page => 150
   end
 
   # GET /teams/1

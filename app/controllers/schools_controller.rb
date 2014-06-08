@@ -10,10 +10,14 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    unless params[:sort] == 'count'
-      @schools = School.accessible_by(current_ability).order(sort_column + " " + sort_direction)
+    if params[:sort] == 'count'
+      @schools = School.accessible_by(current_ability)
+                       .joins(:hackers)
+                       .group('schools.name')
+                       .order("count(hackers.id) #{sort_direction}")
     else
-      @schools = School.accessible_by(current_ability).joins(:hackers).group('schools.name').order("count(hackers.id) " + sort_direction)
+      @schools = School.accessible_by(current_ability)
+                       .order("#{sort_column} #{sort_direction}")
     end
   end
 

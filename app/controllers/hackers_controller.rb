@@ -9,13 +9,18 @@ class HackersController < ApplicationController
   # GET /hackers
   # GET /hackers.json
   def index
-    @hackers = Hacker.accessible_by(current_ability).order(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 200)
+    @hackers = Hacker.accessible_by(current_ability)
+               .order(sort_column + " " + sort_direction)
+               .paginate(:page => params[:page], :per_page => 200)
   end
 
   # GET /hackers/1
   # GET /hackers/1.json
   def show
-    @teammates = @hacker.team.members.split(', ').map{|teammate| view_context.link_to teammate, Hacker.find_by_fname_and_lname(teammate.split(' ')[0], teammate.split(' ')[1])}.join(', ').html_safe
+    @teammates = @hacker.team.members.split(', ').map do |teammate|
+      fname, lname = teammate.split ' '
+      view_context.link_to teammate, Hacker.find_by_fname_and_lname(fname, lname)
+    end.join(', ').html_safe
   end
 
   def commit
@@ -134,7 +139,10 @@ class HackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hacker_params
-      params.require(:hacker).permit(:fname, :lname, :school, :school_id, :team, :team_id, :contact_date, :status, :status_id, :email, :github, :tshirt_size, :why, :resume, :cell, :rating)
+      params.require(:hacker).permit(:fname, :lname, :school, :school_id,
+                                     :team, :team_id, :contact_date, :status,
+                                     :status_id, :email, :github, :tshirt_size,
+                                     :why, :resume, :cell, :rating)
     end
 
     def sort_column

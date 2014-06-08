@@ -10,7 +10,9 @@ class SponsorsController < ApplicationController
   # GET /sponsors/1
   # GET /sponsors/1.json
   def show
-    @company_sponsors = @sponsor.representatives.map{|representative| view_context.link_to representative.fname, representative}.join(', ').html_safe
+    @company_sponsors = @sponsor.representatives.map do |representative|
+      view_context.link_to representative.fname, representative
+    end.join(', ').html_safe
   end
 
   # GET /sponsors/new
@@ -70,6 +72,7 @@ class SponsorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sponsor_params
-      params.require(:sponsor).permit(:company_name, :tier, :money_given, :has_paid, :tech_talk_time, :mini_hack)
+      params.require(:sponsor).permit(:company_name, :tier, :money_given,
+                                      :has_paid, :tech_talk_time, :mini_hack)
     end
 end
