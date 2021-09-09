@@ -7,7 +7,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'spreadsheet'
 gem 'devise'
-gem 'nokogiri'
+gem 'nokogiri', '>= 1.8.2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'bootstrap-datepicker-rails'
@@ -24,7 +24,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.8.0'
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'pry'
