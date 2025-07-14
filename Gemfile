@@ -14,7 +14,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap', '~> 1.0.0'
 gem 'paperclip', '~> 4.1.1'
-gem 'aws-sdk', '~> 1.42.0'
+gem 'aws-sdk', '~> 1.52.0'
 gem 'cancan'
 gem 'rails-i18n', '~> 4.0.0'
 
